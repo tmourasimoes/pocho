@@ -1,4 +1,4 @@
-Class demoho.msg.RequestAgendaDisponivel Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
+Class pocho.msg.RequestAgendaDisponivel Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
 
 Property IdEspecialidades As %String;

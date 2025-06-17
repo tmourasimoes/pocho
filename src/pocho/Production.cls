@@ -1,12 +1,12 @@
-Class demoho.Production Extends Ens.Production
+Class pocho.Production Extends Ens.Production
 {
 
 XData ProductionDefinition
 {
-<Production Name="demoho.Production" TestingEnabled="true" LogGeneralTraceEvents="true">
+<Production Name="pocho.Production" TestingEnabled="true" LogGeneralTraceEvents="true">
   <Description></Description>
   <ActorPoolSize>1</ActorPoolSize>
-  <Item Name="apiservice" Category="" ClassName="demoho.api.api" PoolSize="0" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
+  <Item Name="apiservice" Category="" ClassName="pocho.api.api" PoolSize="0" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
     <Setting Target="Host" Name="BOAtivo">AcessoDB</Setting>
     <Setting Target="Host" Name="ResourcePaciente">HS.FHIR.DTL.vR4.Model.Resource.Patient</Setting>
   </Item>

@@ -1,4 +1,4 @@
-Class demoho.msg.RequestOperadora Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
+Class pocho.msg.RequestOperadora Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
 
 Property IdOperadora As %String;

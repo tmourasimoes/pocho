@@ -1,4 +1,4 @@
-Class demoho.msg.RequestPlanoConvenio Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
+Class pocho.msg.RequestPlanoConvenio Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
 
 Property CdConvenio As %String;

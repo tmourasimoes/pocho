@@ -1,4 +1,4 @@
-Class demoho.wsdl.WSDLApi Extends (Ens.BusinessService, %SOAP.WebService)
+Class pocho.wsdl.WSDLApi Extends (Ens.BusinessService, %SOAP.WebService)
 {
 
 /// Name of the WebService.
@@ -18,18 +18,18 @@ Method Teste(pTeste As %String) As %String [ WebMethod ]
 
 Method TesteAPI(pTeste As %String) As %String [ WebMethod ]
 {
-    Set pObj = ##class("demoho.api.api").%New()
+    Set pObj = ##class("pocho.api.api").%New()
     Set rv= pObj.teste("1234",.t)
     Quit t
 }
 
-Method GXML(Output pObj As demoho.msg.GXML) As %Status [ WebMethod ]
+Method GXML(Output pObj As pocho.msg.GXML) As %Status [ WebMethod ]
 {
     Set tSC = $$$OK
     
   
 
-    Set tTabela = ##class(demoho.msg.GXML).%OpenId(1)
+    Set tTabela = ##class(pocho.msg.GXML).%OpenId(1)
 
     Set pObj.Telefone = tTabela.Telefone
     Set pObj.Nome     = tTabela.Nome

@@ -1,4 +1,4 @@
-Class demoho.util.util Extends %RegisteredObject
+Class pocho.util.util Extends %RegisteredObject
 {
 
 /// Converte EnsLib.SQL.Snapshot para %Library.DynamicObject

@@ -1,4 +1,4 @@
-Class demoho.msg.GXML Extends (%Persistent, %Populate, %XML.Adaptor)
+Class pocho.msg.GXML Extends (%Persistent, %Populate, %XML.Adaptor)
 {
 
 Property Nome As %String(XMLPROJECTION = "NONE");
@@ -23,11 +23,11 @@ Storage Default
 <Value>Telefone</Value>
 </Value>
 </Data>
-<DataLocation>^demoho.msg.GXMLD</DataLocation>
+<DataLocation>^pocho.msg.GXMLD</DataLocation>
 <DefaultData>GXMLDefaultData</DefaultData>
-<IdLocation>^demoho.msg.GXMLD</IdLocation>
-<IndexLocation>^demoho.msg.GXMLI</IndexLocation>
-<StreamLocation>^demoho.msg.GXMLS</StreamLocation>
+<IdLocation>^pocho.msg.GXMLD</IdLocation>
+<IndexLocation>^pocho.msg.GXMLI</IndexLocation>
+<StreamLocation>^pocho.msg.GXMLS</StreamLocation>
 <Type>%Storage.Persistent</Type>
 }
 

@@ -1,11 +1,11 @@
-Class demoho.bo.BOOracleV3 Extends Ens.BusinessOperation
+Class pocho.bo.BOOracleV3 Extends Ens.BusinessOperation
 {
 
 Parameter ADAPTER = "EnsLib.SQL.OutboundAdapter";
 
 Parameter INVOCATION = "Queue";
 
-Method RetornarPacientePorCPF(pRequest As demoho.msg.RequestPaciente, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+Method RetornarPacientePorCPF(pRequest As pocho.msg.RequestPaciente, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         $$$TRACE("RetornarPacientePorCPF - Retornar ")
         
@@ -20,7 +20,7 @@ Method RetornarPacientePorCPF(pRequest As demoho.msg.RequestPaciente, Output pOu
         return tSC
 }
 
-Method RetornarConvenioPorNome(pRequest As demoho.msg.RequestOperadora, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+Method RetornarConvenioPorNome(pRequest As pocho.msg.RequestOperadora, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         $$$TRACE("RetornarConvenioPorNome - Retornar ")
         
@@ -35,7 +35,7 @@ Method RetornarConvenioPorNome(pRequest As demoho.msg.RequestOperadora, Output p
         return tSC
 }
 
-Method RetornarPlanoPorConvenio(pRequest As demoho.msg.RequestPlanoConvenio, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+Method RetornarPlanoPorConvenio(pRequest As pocho.msg.RequestPlanoConvenio, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         $$$TRACE("RetornarPlanoPorConvenio - Retornar ")
         
@@ -49,7 +49,7 @@ Method RetornarPlanoPorConvenio(pRequest As demoho.msg.RequestPlanoConvenio, Out
         return tSC
 }
 
-Method RetornarEspecialidade(pRequest As demoho.msg.RequestEspecialidades, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+Method RetornarEspecialidade(pRequest As pocho.msg.RequestEspecialidades, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         $$$TRACE("RetornarEspecialidades - Retornar ")
         
@@ -63,7 +63,7 @@ Method RetornarEspecialidade(pRequest As demoho.msg.RequestEspecialidades, Outpu
         return tSC
 }
 
-Method RetornarAtuacaoEspecialidade(pRequest As demoho.msg.RequestAtuacaoEspecialidade, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+Method RetornarAtuacaoEspecialidade(pRequest As pocho.msg.RequestAtuacaoEspecialidade, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         $$$TRACE("RetornarAtuacaoEspecialidade - Retornar ")
         
@@ -77,7 +77,7 @@ Method RetornarAtuacaoEspecialidade(pRequest As demoho.msg.RequestAtuacaoEspecia
         return tSC
 }
 
-Method RetornarRegraPermiteConvenioAgenda(pRequest As demoho.msg.RequestRegraPermiteConvenioAgenda, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+Method RetornarRegraPermiteConvenioAgenda(pRequest As pocho.msg.RequestRegraPermiteConvenioAgenda, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         $$$TRACE("RetornarRegraPermiteConvenioAgenda - Retornar ")
         
@@ -91,7 +91,7 @@ Method RetornarRegraPermiteConvenioAgenda(pRequest As demoho.msg.RequestRegraPer
         return tSC
 }
 
-Method RetornarRegraQuantidadeAgendamento(pRequest As demoho.msg.RequestQuantidadeAgendamento, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+Method RetornarRegraQuantidadeAgendamento(pRequest As pocho.msg.RequestQuantidadeAgendamento, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         $$$TRACE("RetornarRegraQuantidadeAgendamento - Retornar ")
         
@@ -107,7 +107,7 @@ Method RetornarRegraQuantidadeAgendamento(pRequest As demoho.msg.RequestQuantida
         return tSC
 }
 
-Method RetornarAgendaDisponivel(pRequest As demoho.msg.RequestAgendaDisponivel, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+Method RetornarAgendaDisponivel(pRequest As pocho.msg.RequestAgendaDisponivel, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         $$$TRACE("RetornarAgendaDisponivel - Retornar ")
         
@@ -143,7 +143,7 @@ Method RetornarAgendaDisponivel(pRequest As demoho.msg.RequestAgendaDisponivel, 
         return tSC
 }
 
-Method RetornarPacienteAgendaPorCPF(pRequest As demoho.msg.RequestQuantidadeAgenda, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+Method RetornarPacienteAgendaPorCPF(pRequest As pocho.msg.RequestQuantidadeAgenda, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         $$$TRACE("RetornarPacienteAgendaPorCPF - Retornar ")
         
@@ -164,15 +164,15 @@ XData MessageMap
 <MapItems>
     
 
-    <MapItem MessageType="demoho.msg.RequestPaciente">
+    <MapItem MessageType="pocho.msg.RequestPaciente">
 		<Method>RetornarPacientePorCPF</Method>
     </MapItem>
 
-     <MapItem MessageType="demoho.msg.RequestOperadora">
+     <MapItem MessageType="pocho.msg.RequestOperadora">
 		<Method>RetornarConvenioPorNome</Method>
     </MapItem>
 
-     <MapItem MessageType="demoho.msg.RequestPlanoConvenio">
+     <MapItem MessageType="pocho.msg.RequestPlanoConvenio">
 		<Method>RetornarPlanoPorConvenio</Method>
     </MapItem>
 
@@ -180,23 +180,23 @@ XData MessageMap
 		<Method>RetornarEspecialidade</Method>
     </MapItem>
 
-    <MapItem MessageType="demoho.msg.RequestEspecialidades">
+    <MapItem MessageType="pocho.msg.RequestEspecialidades">
 		<Method>RetornarAtuacaoEspecialidade</Method>
     </MapItem>
 
-    <MapItem MessageType="demoho.msg.RequestRegraPermiteConvenioAgenda">
+    <MapItem MessageType="pocho.msg.RequestRegraPermiteConvenioAgenda">
 		<Method>RetornarRegraPermiteConvenioAgenda</Method>
     </MapItem>
 
-     <MapItem MessageType="demoho.msg.RequestQuantidadeAgendamento">
+     <MapItem MessageType="pocho.msg.RequestQuantidadeAgendamento">
 		<Method>RetornarRegraQuantidadeAgendamento</Method>
     </MapItem>
 
-     <MapItem MessageType="demoho.msg.RequestAgendaDisponivel">
+     <MapItem MessageType="pocho.msg.RequestAgendaDisponivel">
 		<Method>RetornarAgendaDisponivel</Method>
     </MapItem>
 
-     <MapItem MessageType="demoho.msg.RequestQuantidadeAgenda">
+     <MapItem MessageType="pocho.msg.RequestQuantidadeAgenda">
 		<Method>RetornarPacienteAgendaPorCPF</Method>
     </MapItem>
 

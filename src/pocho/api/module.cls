@@ -1,4 +1,4 @@
-Class demoho.api.module Extends apiPub.core.service
+Class pocho.api.module Extends apiPub.core.service
 {
 
 /// Charset for Output
@@ -8,7 +8,7 @@ Parameter CHARSET = "UTF-8";
 Parameter OASPath As %String = "Get:/_spec";
 
 /// Target class that contains all API (Web Methods) for this module
-Parameter DispatchClass As %String = "demoho.api.api";
+Parameter DispatchClass As %String = "pocho.api.api";
 
 /// When the class is also a Business Service
 Parameter DispatchBSName As %String = "apiservice";
@@ -17,7 +17,7 @@ Parameter DispatchBSName As %String = "apiservice";
 Parameter Traceable As %Boolean = 1;
 
 /// Group for monitoring
-Parameter APIDomain = "demoho";
+Parameter APIDomain = "pocho";
 
 /// If OASNestedMode=1 publisher avoid name conflict for OAS Schemas (Complex Requests and Responses)
 Parameter OASNestedMode = 0;

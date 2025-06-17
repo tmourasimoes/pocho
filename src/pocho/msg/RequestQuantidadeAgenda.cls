@@ -1,4 +1,4 @@
-Class demoho.msg.RequestQuantidadeAgenda Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
+Class pocho.msg.RequestQuantidadeAgenda Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
 
 Property CdAgenda As %String;

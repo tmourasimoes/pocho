@@ -1,4 +1,4 @@
-Class demoho.msg.RequestPaciente Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
+Class pocho.msg.RequestPaciente Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
 
 Property CPF As %String;

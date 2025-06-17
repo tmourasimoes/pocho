@@ -1,4 +1,4 @@
-Class demoho.msg.RequestRegraPermiteConvenioAgenda Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
+Class pocho.msg.RequestRegraPermiteConvenioAgenda Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
 
 Property CdConvenio As %String;

@@ -1,4 +1,4 @@
-Class demoho.msg.RequestAtuacaoEspecialidade Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
+Class pocho.msg.RequestAtuacaoEspecialidade Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
 
 Property IdEspecialidades As %String;

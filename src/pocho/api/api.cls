@@ -1,4 +1,4 @@
-Class demoho.api.api Extends (Ens.BusinessService, %SOAP.WebService)
+Class pocho.api.api Extends (Ens.BusinessService, %SOAP.WebService)
 {
 
 /// Name of the WebService.
@@ -27,14 +27,14 @@ Method teste(pCode As %String, Output pOutput As %String) As %Status [ WebMethod
 /// @apiPub[path="RetornarPacientePorCPF/{pCPF}"]
 Method RetornarPacientePorCPF(pCPF As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
-    Set pInput = ##class("demoho.msg.RequestPaciente").%New()
+    Set pInput = ##class("pocho.msg.RequestPaciente").%New()
     Set pInput.CPF = pCPF
     
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
       
     if $$$ISERR(tSC) Return tSC
     
-    Set pOutput = ##class(demoho.util.util).SnapToDyna(tResponse)
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
     
     return tSC
 }
@@ -45,14 +45,14 @@ Method RetornarPacientePorCPF(pCPF As %String, Output pOutput As %DynamicObject)
 /// @apiPub[path="RetornarConvenioPorNome/{pIdOperadora}"]
 Method RetornarConvenioPorNome(pIdOperadora As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
-    Set pInput = ##class("demoho.msg.RequestOperadora").%New()
+    Set pInput = ##class("pocho.msg.RequestOperadora").%New()
     Set pInput.pIdOperadora = pIdOperadora
     
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
       
     if $$$ISERR(tSC) Return tSC
     
-    Set pOutput = ##class(demoho.util.util).SnapToDyna(tResponse)
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
     
     return tSC
 }
@@ -63,7 +63,7 @@ Method RetornarConvenioPorNome(pIdOperadora As %String, Output pOutput As %Dynam
 /// @apiPub[path="RetornarPlanoPorConvenio/{pConvenio}/{pPlano}"]
 Method RetornarPlanoPorConvenio(pConvenio As %String, pPlano As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
-    Set pInput = ##class("demoho.msg.RequestPlanoConvenio").%New()
+    Set pInput = ##class("pocho.msg.RequestPlanoConvenio").%New()
     Set pInput.CdConvenio = pConvenio
     Set pInput.CdPlano = pPlano
 
@@ -72,7 +72,7 @@ Method RetornarPlanoPorConvenio(pConvenio As %String, pPlano As %String, Output 
       
     if $$$ISERR(tSC) Return tSC
     
-    Set pOutput = ##class(demoho.util.util).SnapToDyna(tResponse)
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
     
     return tSC
 }
@@ -83,7 +83,7 @@ Method RetornarPlanoPorConvenio(pConvenio As %String, pPlano As %String, Output 
 /// @apiPub[path="RetornarEspecialidade/{pIdEspecialidade}"]
 Method RetornarEspecialidade(pIdEspecialidade As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
-    Set pInput = ##class("demoho.msg.RequestEspecialidades").%New()
+    Set pInput = ##class("pocho.msg.RequestEspecialidades").%New()
     Set pInput.IdEspecialidades = pIdEspecialidade
     
     
@@ -91,7 +91,7 @@ Method RetornarEspecialidade(pIdEspecialidade As %String, Output pOutput As %Dyn
       
     if $$$ISERR(tSC) Return tSC
     
-    Set pOutput = ##class(demoho.util.util).SnapToDyna(tResponse)
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
     
     return tSC
 }
@@ -102,7 +102,7 @@ Method RetornarEspecialidade(pIdEspecialidade As %String, Output pOutput As %Dyn
 /// @apiPub[path="RetornarAtuacaoEspecialidade/{pIdEspecialidade}/{pNrAreaAtuacao}"]
 Method RetornarAtuacaoEspecialidade(pIdEspecialidade As %String, pNrAreaAtuacao As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
-    Set pInput = ##class("demoho.msg.RequestAtuacaoEspecialidade").%New()
+    Set pInput = ##class("pocho.msg.RequestAtuacaoEspecialidade").%New()
     Set pInput.IdEspecialidades = pIdEspecialidade
     Set pInput.NrAreaAtuacao = pNrAreaAtuacao
     
@@ -111,7 +111,7 @@ Method RetornarAtuacaoEspecialidade(pIdEspecialidade As %String, pNrAreaAtuacao 
       
     if $$$ISERR(tSC) Return tSC
     
-    Set pOutput = ##class(demoho.util.util).SnapToDyna(tResponse)
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
     
     return tSC
 }
@@ -122,14 +122,14 @@ Method RetornarAtuacaoEspecialidade(pIdEspecialidade As %String, pNrAreaAtuacao 
 /// @apiPub[path="RetornarRegraPermiteConvenioAgenda/{pCdConvenio}"]
 Method RetornarRegraPermiteConvenioAgenda(pCdConvenio As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
-    Set pInput = ##class("demoho.msg.RequestRegraPermiteConvenioAgenda").%New()
+    Set pInput = ##class("pocho.msg.RequestRegraPermiteConvenioAgenda").%New()
     Set pInput.CdConvenio =  pCdConvenio
     
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
       
     if $$$ISERR(tSC) Return tSC
     
-    Set pOutput = ##class(demoho.util.util).SnapToDyna(tResponse)
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
     
     return tSC
 }
@@ -139,12 +139,12 @@ Method RetornarRegraPermiteConvenioAgenda(pCdConvenio As %String, Output pOutput
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]
 /// @apiPub[verb="GET"]
-Method RetornarRegraQuantidadeAgendamento(pInput As demoho.msg.RequestQuantidadeAgendamento, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
+Method RetornarRegraQuantidadeAgendamento(pInput As pocho.msg.RequestQuantidadeAgendamento, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
     if $$$ISERR(tSC) Return tSC
     
-    Set pOutput = ##class(demoho.util.util).SnapToDyna(tResponse)
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
     
     return tSC
 }
@@ -154,12 +154,12 @@ Method RetornarRegraQuantidadeAgendamento(pInput As demoho.msg.RequestQuantidade
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]
 /// @apiPub[verb="GET"]
-Method RetornarAgendaDisponivel(pInput As demoho.msg.RequestAgendaDisponivel, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
+Method RetornarAgendaDisponivel(pInput As pocho.msg.RequestAgendaDisponivel, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
     if $$$ISERR(tSC) Return tSC
     
-    Set pOutput = ##class(demoho.util.util).SnapToDyna(tResponse)
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
     
     return tSC
 }
@@ -169,12 +169,12 @@ Method RetornarAgendaDisponivel(pInput As demoho.msg.RequestAgendaDisponivel, Ou
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]
 /// @apiPub[verb="GET"]
-Method RetornarPacienteAgendaPorCPF(pInput As demoho.msg.RequestQuantidadeAgenda, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
+Method RetornarPacienteAgendaPorCPF(pInput As pocho.msg.RequestQuantidadeAgenda, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
     if $$$ISERR(tSC) Return tSC
     
-    Set pOutput = ##class(demoho.util.util).SnapToDyna(tResponse)
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
     
     return tSC
 }
