@@ -10,13 +10,13 @@ services:
   
     ports:
       - "1972:1972"
-      - "22773:52773"
+      - "56773:52773"
       - "2188:2188"
 
     volumes:
   
       - type: bind
-        source: ./external/license/iris.key
+        source: ./license/iris.key
         target: /license/iris.key
 
     

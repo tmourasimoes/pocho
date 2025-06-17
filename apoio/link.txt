@@ -1,0 +1,75 @@
+
+
+UCR
+https://demo-hs.hsucr:9092/csp/sys/%25CSP.Portal.Home.zen?$NAMESPACE=HSBUS
+
+
+IRIS FHIR-FACADE
+http://demo-fhir-facade-local:22773/swagger-ui/index.html?url=http://demo-fhir:42773/apiPub/wizard/DEMO/_spec
+http://demo-fhir-facade-local:22773/swagger-ui/index.html?url=http://demo-fhir:42773/api/DEMO/_spec
+http://demo-fhir-facade-local:22773/csp/sys/%25CSP.Portal.Home.zen
+http://demo-fhir-facade-local:22773/terminal/
+
+IRIS FHIR
+http://demo-fhir-local:42773/swagger-ui/index.html?url=http://demo-fhir:42773/apiPub/wizard/DEMO/_spec
+http://demo-fhir-local:42773/swagger-ui/index.html?url=http://demo-fhir:42773/api/DEMO/_spec
+http://demo-fhir-local:42773/csp/sys/%25CSP.Portal.Home.zen
+http://demo-fhir-local:42773/terminal/
+
+
+
+IRIS DataPlataform
+http://demo-plataform-local:56773/swagger-ui/index.html?url=http://demo-plataform:55773/apiPub/wizard/demo/_spec
+http://demo-plataform-local:56773/swagger-ui/index.html?url=http://demo-plataform:55773/api/demo/_spec
+http://demo-plataform-local:56773/csp/sys/%25CSP.Portal.Home.zen
+http://demo-plataform-local:56773/terminal/
+
+IRIS HealthConnect
+http://demo-healthconnect-local:52775/swagger-ui/index.html?url=http://demo-plataform:55773/apiPub/wizard/demo/_spec
+http://demo-healthconnect-local:52775/swagger-ui/index.html?url=http://demo-plataform:55773/api/demo/_spec
+http://demo-healthconnect-local:52775/csp/sys/%25CSP.Portal.Home.zen
+http://demo-healthconnect-local:52775/terminal/
+
+IRIS Interop
+http://demo-interop-local:62773/swagger-ui/index.html?url=http://demo-interop:62773/apiPub/wizard/demo/_spec
+http://demo-interop-local:62773/swagger-ui/index.html?url=http://demo-interop:62773/api/demo/_spec
+http://demo-interop-local:62773/csp/sys/%25CSP.Portal.Home.zen
+http://demo-interop-local:62773/terminal/
+
+IRIS DataBase
+http://demo-database-local:32773/swagger-ui/index.html?url=http://demo-database:32773/apiPub/wizard/demo/_spec
+http://demo-database-local:32773/swagger-ui/index.html?url=http://demo-database:32773/api/demo/_spec
+http://demo-database-local:32773/csp/sys/%25CSP.Portal.Home.zen
+http://demo-database-local:32773/terminal/
+
+IRIS ApiPub
+http://demo-apipub-local:22773/swagger-ui/index.html?url=http://demo-apipub:22773/apiPub/wizard/demo/_spec
+http://demo-apipub-local:22773/swagger-ui/index.html?url=http://demo-apipub:22773/api/demo/_spec
+http://demo-apipub-local:22773/csp/sys/%25CSP.Portal.Home.zen
+http://demo-apipub-local:22773/terminal/
+
+
+http://demo_healthconnect-local/csp/sys/%25CSP.Portal.Home.zen
+
+
+Webgateway
+http://demo-healthconnect-2024-local/csp/bin/Systems/Module.cxw
+
+http://demo-healthconnect-2024-local/csp/sys/%25CSP.Portal.Home.zen
+
+
+http://demo-webgateway-local/csp/sys/%25CSP.Portal.Home.zen
+
+gerar hash senha
+docker pull containers.intersystems.com/intersystems/passwordhash:1.1
+
+docker run --rm -it containers.intersystems.com/intersystems/passwordhash:1.1 -algorithm SHA512 -workfactor 10000
+ 
+ docker exec -it webgateway /bin/bash
+apt update
+apt install  iputils-ping
+
+
+Versao antiga ZPM
+s version="0.7.1" s r=##class(%Net.HttpRequest).%New(),r.Server="pm.community.intersystems.com",r.SSLConfiguration="ISC.FeatureTracker.SSL.Config" d r.Get("/packages/zpm/"_version_"/installer"),$system.OBJ.LoadStream(r.HttpResponse.Data,"c")
+ 
