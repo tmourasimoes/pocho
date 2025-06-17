@@ -1,0 +1,210 @@
+Class demoho.bo.BOOracle Extends Ens.BusinessOperation
+{
+
+Parameter ADAPTER = "EnsLib.SQL.OutboundAdapter";
+
+Parameter INVOCATION = "Queue";
+
+Method RetornarPacientePorCPF(pRequest As demoho.msg.RequestPaciente, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+{
+        $$$TRACE("RetornarPacientePorCPF - Retornar ")
+        
+        set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
+            
+        set sqlStr =  "SELECT ID_PACIENTE, NOME FROM TASYAEC_RETORNA_PACIENTE_POR_CPF WHERE CPF = ? "
+        
+        set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.CPF)
+        
+        if $$$ISERR(tSC) return tSC
+        
+        return tSC
+}
+
+Method RetornarConvenioPorNome(pRequest As demoho.msg.RequestOperadora, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+{
+        $$$TRACE("RetornarConvenioPorNome - Retornar ")
+        
+        set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
+            
+        set sqlStr =  "SELECT NM_OPERADORA, QT_DIAS_RETORNO FROM TASYAEC_RETORNA_CONVENIO_POR_NOME WHERE ID_OPERADORA = ? "
+        
+        set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.IdOperadora)
+        
+        if $$$ISERR(tSC) return tSC
+        
+        return tSC
+}
+
+Method RetornarPlanoPorConvenio(pRequest As demoho.msg.RequestPlanoConvenio, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+{
+        $$$TRACE("RetornarPlanoPorConvenio - Retornar ")
+        
+        set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
+            
+        set sqlStr =  "SELECT NM_PLANO FROM TASYAEC_RETORNA_PLANO_POR_CONVENIO WHERE CD_CONVENIO = ? AND CD_CON_PLANO = ? "
+        
+        set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.CdConvenio, pRequest.CdPlano  )      
+        if $$$ISERR(tSC) return tSC
+        
+        return tSC
+}
+
+Method RetornarEspecialidade(pRequest As demoho.msg.RequestEspecialidades, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+{
+        $$$TRACE("RetornarEspecialidades - Retornar ")
+        
+        set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
+            
+        set sqlStr =  "SELECT ESPECIALIDADE FROM TASYAEC_RETORNA_ESPECIALIDADES WHERE ID_ESPECIALIDADE = ?"
+        
+        set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.IdEspecialidades )      
+        if $$$ISERR(tSC) return tSC
+        
+        return tSC
+}
+
+Method RetornarAtuacaoEspecialidade(pRequest As demoho.msg.RequestAtuacaoEspecialidade, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+{
+        $$$TRACE("RetornarAtuacaoEspecialidade - Retornar ")
+        
+        set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
+            
+        set sqlStr =  "SELECT DS_AREA_ATUACAO FROM TASYAEC_AREA_ATUACAO_ESPECIALIDADE WHERE CD_ESPECIALIDADE = ? AND o	NR_SEQ_AREA_ATUACAO = ?"
+        
+        set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.IdEspecialidades, pRequest.NrAreaAtuacao  )      
+        if $$$ISERR(tSC) return tSC
+        
+        return tSC
+}
+
+Method RetornarRegraPermiteConvenioAgenda(pRequest As demoho.msg.RequestRegraPermiteConvenioAgenda, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+{
+        $$$TRACE("RetornarRegraPermiteConvenioAgenda - Retornar ")
+        
+        set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
+            
+        set sqlStr =  "SELECT CD_AGENDA, HORA_INICIO_REGRA,HORA_FIM_REGRA, DIA_SEMANA_REGRA FROM TASYAEC_REGRA_PERMITE_CONVENIO_AGENDA WHERE CD_CONVENIO = ?"
+        
+        set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.CdConvenio)      
+        if $$$ISERR(tSC) return tSC
+        
+        return tSC
+}
+
+Method RetornarRegraQuantidadeAgendamento(pRequest As demoho.msg.RequestQuantidadeAgendamento, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+{
+        $$$TRACE("RetornarRegraQuantidadeAgendamento - Retornar ")
+        
+        set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
+            
+        set sqlStr =  "SELECT CD_CLASSIFICACAO_AGENDA, QT_PERMISSAO, QT_AGENDADO_HOJE_REGRA FROM TASYAEC_REGRA_QTD_AGENDAMENTO "_
+                      " WHERE "_
+                      " CD_AGENDA = ? AND CD_CONVENIO = ? AND DIA_SEMANA_REGRA = ?"
+        
+        set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.CdAgenda, pRequest.CdConvenio, pRequest.DiaSemanaRegra)      
+        if $$$ISERR(tSC) return tSC
+        
+        return tSC
+}
+
+Method RetornarAgendaDisponivel(pRequest As demoho.msg.RequestAgendaDisponivel, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+{
+        $$$TRACE("RetornarAgendaDisponivel - Retornar ")
+        
+        set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
+         
+
+        if pRequest.CdAgenda = "" 
+        {           
+              set sqlStr =  "SELECT CD_AGENDA, DATA, HORARIO, ID_MEDICO FROM TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
+                      " WHERE "
+              Set sqlStr = sqlStr _" ID_ESPECIALIDADE = ? AND NR_SEQ_AREA_ATUACAO = ?"
+              set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.IdEspecialidades, pRequest.NrAreaAtuacao)
+        }
+        if pRequest.CdAgenda '= ""   
+        {
+             set sqlStr =  "SELECT NR_SEQUENCIA_INTERNO_AGENDA, DATA, HORARIO FROM TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
+                      " WHERE "   
+             Set sqlStr = sqlStr _" CD_AGENDA = ?"   
+             set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.CdAgenda)
+        } 
+
+        if pRequest.CdAgenda '= "" && pRequest.Data  '= ""   
+        {
+             set sqlStr =  "SELECT NR_SEQUENCIA_INTERNO_AGENDA,  HORARIO FROM TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
+                      " WHERE "   
+             Set sqlStr = sqlStr _" HORARIO = ? AND o	NR_SEQUENCIA_INTERNO_AGENDA = ?"  
+             set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.Horario, pRequest.NrInternoAgenda) 
+        }
+
+              
+        if $$$ISERR(tSC) return tSC
+        
+        return tSC
+}
+
+Method RetornarPacienteAgendaPorCPF(pRequest As demoho.msg.RequestQuantidadeAgenda, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+{
+        $$$TRACE("RetornarPacienteAgendaPorCPF - Retornar ")
+        
+        set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
+            
+        set sqlStr =  "SELECT   DS_STATUS_AGENDAFROM TASYAEC_RETORNA_PACIENTE_AGENDA_CPF "_
+                      " WHERE "_
+                      " CPF = ? AND CD_AGENDA = ? AND CD_CLASSIFICAO_AGENDA = ? AND DATA = ?"
+        
+        set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.CPF, pRequest.CdAgenda, pRequest.CdClassificacaoAgenda, pRequest.Data)      
+        if $$$ISERR(tSC) return tSC
+        
+        return tSC
+}
+
+XData MessageMap
+{
+<MapItems>
+    
+
+    <MapItem MessageType="demoho.msg.RequestPaciente">
+		<Method>RetornarPacientePorCPF</Method>
+    </MapItem>
+
+     <MapItem MessageType="demoho.msg.RequestOperadora">
+		<Method>RetornarConvenioPorNome</Method>
+    </MapItem>
+
+     <MapItem MessageType="demoho.msg.RequestPlanoConvenio">
+		<Method>RetornarPlanoPorConvenio</Method>
+    </MapItem>
+
+    <MapItem MessageType="RequestEspecialidades">
+		<Method>RetornarEspecialidade</Method>
+    </MapItem>
+
+    <MapItem MessageType="demoho.msg.RequestEspecialidades">
+		<Method>RetornarAtuacaoEspecialidade</Method>
+    </MapItem>
+
+    <MapItem MessageType="demoho.msg.RequestRegraPermiteConvenioAgenda">
+		<Method>RetornarRegraPermiteConvenioAgenda</Method>
+    </MapItem>
+
+     <MapItem MessageType="demoho.msg.RequestQuantidadeAgendamento">
+		<Method>RetornarRegraQuantidadeAgendamento</Method>
+    </MapItem>
+
+     <MapItem MessageType="demoho.msg.RequestAgendaDisponivel">
+		<Method>RetornarAgendaDisponivel</Method>
+    </MapItem>
+
+     <MapItem MessageType="demoho.msg.RequestQuantidadeAgenda">
+		<Method>RetornarPacienteAgendaPorCPF</Method>
+    </MapItem>
+
+
+
+
+
+</MapItems>
+}
+
+}
