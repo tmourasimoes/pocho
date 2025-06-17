@@ -1,0 +1,7 @@
+{
+    "objectscript.conn": {
+        "server": "ris-pocho",
+        "ns": "POCHO",
+        "active": false
+    }
+}
