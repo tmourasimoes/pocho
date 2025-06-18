@@ -4,56 +4,27 @@ services:
   poc-ho:
     hostname: poc-ho      
     container_name: iris-poc-ho
-    image: containers.intersystems.com/intersystems/irishealth:2024.3
+    image: containers.intersystems.com/intersystems/irishealth-ml:2023.1.4.580.0
     networks:
       - rede
   
     ports:
       - "1972:1972"
-      - "52773:52773"
-    environment:
-      
-      - ISC_CPF_MERGE_FILE=/cpf/cpfmerge.cpf  
+      - "56773:52773"
+      - "2188:2188"
 
     volumes:
   
       - type: bind
-        source: ./external/license/iris.key
+        source: ./license/iris.key
         target: /license/iris.key
-      
-      - type: bind
-        source: ./external/cpf/cpfmerge.cpf 
-        target: /cpf/cpfmerge.cpf  
 
     
     command: 
       --key /license/iris.key 
       # -a /scripts/main.script
 
-  pocho-webgateway:
-      hostname: pocho-webgateway
-      container_name: pocho-webgateway
-      # command: --ssl
-      image: containers.intersystems.com/intersystems/webgateway:2024.3
-      
-      networks:
-        - rede
-      
-      environment:  
-        - ISC_CSP_INI_FILE=/webgateway/CSP.ini
-        - ISC_CSP_CONF_FILE=/webgateway/CSP.conf
-        # - ISC_DATA_DIRECTORY=/db/demo-webgateway
-      ports:
-        - "8080:80"
-        
-      volumes:
-        - type: bind
-          source: ./external/datadb
-          target: /db 
 
-        - type: bind
-          source: ./external//webgateway
-          target: /webgateway 
   
 networks:
   rede:

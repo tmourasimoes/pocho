@@ -11,7 +11,7 @@ Method RetornarPacientePorCPF(pRequest As pocho.msg.RequestPaciente, Output pOut
         
         set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
             
-        set sqlStr =  "SELECT ID_PACIENTE, NOME FROM TASYAEC_RETORNA_PACIENTE_POR_CPF WHERE CPF = ? "
+        set sqlStr =  "SELECT ID_PACIENTE, NOME FROM TASY.TASYAEC_RETORNA_PACIENTE_POR_CPF WHERE CPF = ? "
         
         set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.CPF)
         
@@ -26,7 +26,7 @@ Method RetornarConvenioPorNome(pRequest As pocho.msg.RequestOperadora, Output pO
         
         set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
             
-        set sqlStr =  "SELECT NM_OPERADORA, QT_DIAS_RETORNO FROM TASYAEC_RETORNA_CONVENIO_POR_NOME WHERE ID_OPERADORA = ? "
+        set sqlStr =  "SELECT NM_OPERADORA, QT_DIAS_RETORNO FROM TASY.TASYAEC_RETORNA_CONVENIO_POR_NOME WHERE ID_OPERADORA = ? "
         
         set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.IdOperadora)
         
@@ -41,7 +41,7 @@ Method RetornarPlanoPorConvenio(pRequest As pocho.msg.RequestPlanoConvenio, Outp
         
         set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
             
-        set sqlStr =  "SELECT NM_PLANO FROM TASYAEC_RETORNA_PLANO_POR_CONVENIO WHERE CD_CONVENIO = ? AND CD_CON_PLANO = ? "
+        set sqlStr =  "SELECT NM_PLANO FROM TASY.TASYAEC_RETORNA_PLANO_POR_CONVENIO WHERE CD_CONVENIO = ? AND CD_CON_PLANO = ? "
         
         set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.CdConvenio, pRequest.CdPlano  )      
         if $$$ISERR(tSC) return tSC
@@ -55,7 +55,7 @@ Method RetornarEspecialidade(pRequest As pocho.msg.RequestEspecialidades, Output
         
         set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
             
-        set sqlStr =  "SELECT ESPECIALIDADE FROM TASYAEC_RETORNA_ESPECIALIDADES WHERE ID_ESPECIALIDADE = ?"
+        set sqlStr =  "SELECT ESPECIALIDADE FROM TASY.TASYAEC_RETORNA_ESPECIALIDADES WHERE ID_ESPECIALIDADE = ?"
         
         set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.IdEspecialidades )      
         if $$$ISERR(tSC) return tSC
@@ -69,7 +69,7 @@ Method RetornarAtuacaoEspecialidade(pRequest As pocho.msg.RequestAtuacaoEspecial
         
         set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
             
-        set sqlStr =  "SELECT DS_AREA_ATUACAO FROM TASYAEC_AREA_ATUACAO_ESPECIALIDADE WHERE CD_ESPECIALIDADE = ? AND o	NR_SEQ_AREA_ATUACAO = ?"
+        set sqlStr =  "SELECT DS_AREA_ATUACAO FROM TASY.TASYAEC_AREA_ATUACAO_ESPECIALIDADE WHERE CD_ESPECIALIDADE = ? AND NR_SEQ_AREA_ATUACAO = ?"
         
         set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.IdEspecialidades, pRequest.NrAreaAtuacao  )      
         if $$$ISERR(tSC) return tSC
@@ -83,7 +83,7 @@ Method RetornarRegraPermiteConvenioAgenda(pRequest As pocho.msg.RequestRegraPerm
         
         set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
             
-        set sqlStr =  "SELECT CD_AGENDA, HORA_INICIO_REGRA,HORA_FIM_REGRA, DIA_SEMANA_REGRA FROM TASYAEC_REGRA_PERMITE_CONVENIO_AGENDA WHERE CD_CONVENIO = ?"
+        set sqlStr =  "SELECT CD_AGENDA, HORA_INICIO_REGRA,HORA_FIM_REGRA, DIA_SEMANA_REGRA FROM TASY.TASYAEC_REGRA_PERMITE_CONVENIO_AGENDA WHERE CD_CONVENIO = ?"
         
         set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.CdConvenio)      
         if $$$ISERR(tSC) return tSC
@@ -97,9 +97,9 @@ Method RetornarRegraQuantidadeAgendamento(pRequest As pocho.msg.RequestQuantidad
         
         set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
             
-        set sqlStr =  "SELECT CD_CLASSIFICACAO_AGENDA, QT_PERMISSAO, QT_AGENDADO_HOJE_REGRA FROM TASYAEC_REGRA_QTD_AGENDAMENTO "_
+        set sqlStr =  "SELECT CD_CLASSIFICACAO_AGENDA, QT_PERMISSAO, QT_AGENDADO_HOJE_REGRA FROM TASY.TASYAEC_REGRA_QTD_AGENDAMENTO "_
                       " WHERE "_
-                      " CD_AGENDA = ? AND CD_CONVENIO = ? AND DIA_SEMANA_REGRA = ?"
+                      " CD_AGENDA = ? AND CD_CONVENIO = ? AND DS_DIA_REGRA = ?"
         
         set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.CdAgenda, pRequest.CdConvenio, pRequest.DiaSemanaRegra)      
         if $$$ISERR(tSC) return tSC
@@ -116,14 +116,14 @@ Method RetornarAgendaDisponivel(pRequest As pocho.msg.RequestAgendaDisponivel, O
 
         if pRequest.CdAgenda = "" 
         {           
-              set sqlStr =  "SELECT CD_AGENDA, DATA, HORARIO, ID_MEDICO FROM TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
+              set sqlStr =  "SELECT CD_AGENDA, DATA, HORARIO, ID_MEDICO FROM TASY.TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
                       " WHERE "
               Set sqlStr = sqlStr _" ID_ESPECIALIDADE = ? AND NR_SEQ_AREA_ATUACAO = ?"
               set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.IdEspecialidades, pRequest.NrAreaAtuacao)
         }
         if pRequest.CdAgenda '= ""   
         {
-             set sqlStr =  "SELECT NR_SEQUENCIA_INTERNO_AGENDA, DATA, HORARIO FROM TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
+             set sqlStr =  "SELECT NR_SEQUENCIA_INTERNO_AGENDA, DATA, HORARIO FROM TASY.TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
                       " WHERE "   
              Set sqlStr = sqlStr _" CD_AGENDA = ?"   
              set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.CdAgenda)
@@ -131,7 +131,7 @@ Method RetornarAgendaDisponivel(pRequest As pocho.msg.RequestAgendaDisponivel, O
 
         if pRequest.CdAgenda '= "" && pRequest.Data  '= ""   
         {
-             set sqlStr =  "SELECT NR_SEQUENCIA_INTERNO_AGENDA,  HORARIO FROM TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
+             set sqlStr =  "SELECT NR_SEQUENCIA_INTERNO_AGENDA,  HORARIO FROM TASY.TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
                       " WHERE "   
              Set sqlStr = sqlStr _" HORARIO = ? AND o	NR_SEQUENCIA_INTERNO_AGENDA = ?"  
              set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.Horario, pRequest.NrInternoAgenda) 
@@ -149,7 +149,7 @@ Method RetornarPacienteAgendaPorCPF(pRequest As pocho.msg.RequestQuantidadeAgend
         
         set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
             
-        set sqlStr =  "SELECT   DS_STATUS_AGENDAFROM TASYAEC_RETORNA_PACIENTE_AGENDA_CPF "_
+        set sqlStr =  "SELECT   DS_STATUS_AGENDAFROM TASY.TASYAEC_RETORNA_PACIENTE_AGENDA_CPF "_
                       " WHERE "_
                       " CPF = ? AND CD_AGENDA = ? AND CD_CLASSIFICAO_AGENDA = ? AND DATA = ?"
         
@@ -162,7 +162,9 @@ Method RetornarPacienteAgendaPorCPF(pRequest As pocho.msg.RequestQuantidadeAgend
 XData MessageMap
 {
 <MapItems>
-    
+     <MapItem MessageType="pocho.msg.RequestAtuacaoEspecialidade">
+		<Method>RetornarAtuacaoEspecialidade</Method>
+    </MapItem>
 
     <MapItem MessageType="pocho.msg.RequestPaciente">
 		<Method>RetornarPacientePorCPF</Method>
@@ -176,7 +178,7 @@ XData MessageMap
 		<Method>RetornarPlanoPorConvenio</Method>
     </MapItem>
 
-    <MapItem MessageType="RequestEspecialidades">
+    <MapItem MessageType="pocho.msg.RequestEspecialidades">
 		<Method>RetornarEspecialidade</Method>
     </MapItem>
 
