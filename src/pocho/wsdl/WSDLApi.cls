@@ -18,14 +18,16 @@ Method Teste(pTeste As %String) As %String [ WebMethod ]
     Quit pTeste_"1"
 }
 
-Method RetornarPacientePorCPF(pCPF As %String) As pocho.msg.GXML [ WebMethod ]
+Method RetornarPacientePorCPF(pCPF As %String) As %String [ WebMethod ]
 {
-    Set pInput = ##class("pocho.msg.GXML").%New()
-    Set pInput.Telefone = pCPF
+    Set pInput = ##class("pocho.msg.RequestPaciente").%New()
+    Set pInput.CPF = pCPF
     
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
         
-    Quit pInput
+    do tResponse.XMLExportToString(.r)
+
+    Quit r
 }
 
 // Method GXML(Output pObj As pocho.msg.GXML) As pocho.msg.GXML [ WebMethod ]
