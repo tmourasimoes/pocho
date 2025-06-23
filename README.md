@@ -7,6 +7,12 @@
 6. Open IRIS terminal: http://localhost:22773/terminal/    
 6. Open Webgateway managementportal: http://localhost:22773/csp/bin/Systems/Module.cxw
 
+WSDL
+
+http://localhost:52773/csp/healthshare/pocho/services/pocho.wsdl.WSDLApi.cls?wsdl
+http://localhost:52773/api/wsdl/pocho/pocho.wsdl.WSDLApi.cls?wsdl
+
+
 7. Open Swagger to Access the APIs and input demo data in many ways: http://localhost:52773/swagger-ui/index.html?url=http://localhost:52773/api/pocho/_spec#/
 
 Additonal commands

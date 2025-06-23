@@ -14,11 +14,14 @@ XData ProductionDefinition
   </Item>
   <Item Name="apiPub.tracer.bo" Category="" ClassName="apiPub.tracer.bo" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
-  <Item Name="JGS" Category="" ClassName="EnsLib.JavaGateway.Service" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  <Item Name="JGS" Category="" ClassName="EnsLib.JavaGateway.Service" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
   </Item>
   <Item Name="apiPub.tracer.bm" Category="" ClassName="apiPub.tracer.bm" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
-  
+  <Item Name="BOOracle" Category="" ClassName="pocho.bo.BOOracle" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
+    <Setting Target="Adapter" Name="DSN">ORACLE</Setting>
+    <Setting Target="Adapter" Name="JGService">JGS</Setting>
+  </Item>
 </Production>
 }
 
