@@ -212,21 +212,6 @@ Method RetornarDataDisponivel(pCdAgenda As %String, Output pOutput As %DynamicOb
     return tSC
 }
 
-/// RetornarAgendaDisponivel
-/// @apiPub[path="/RetornarAgendaDisponivel"]
-/// @apiPub[charset="UTF-8"]
-/// @apiPub[tag="Consultar"]
-/// @apiPub[verb="GET"]
-Method RetornarAgendaDisponivel(pInput As pocho.msg.RequestAgendaDisponivel, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
-{
-    Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
-    if $$$ISERR(tSC) Return tSC
-    
-    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
-    
-    return tSC
-}
-
 /// RetornarPacienteAgendaPorCPF
 /// @apiPub[path="/RetornarPacienteAgendaPorCPF"]
 /// @apiPub[charset="UTF-8"]
