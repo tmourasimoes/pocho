@@ -122,46 +122,61 @@ Method RetornarRegraQuantidadeAgendamento(pRequest As pocho.msg.RequestQuantidad
         return tSC
 }
 
-Method RetornarAgendaDisponivel(pRequest As pocho.msg.RequestAgendaDisponivel, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+Method RetornarHorariosDisponivel(pRequest As pocho.msg.RequestHorariosDisponivel, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
-        $$$TRACE("RetornarAgendaDisponivel - Retornar ")
+                
+        $$$TRACE("RetornarHorariosDisponivel - Retornar ")
         
         set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
-         
-
-        if pRequest.CdAgenda = "" 
-        {           
-              $$$TRACE("RetornarAgendaDisponivel - pRequest.CdAgenda vazia ")
-              
-              set sqlStr =  "SELECT CD_AGENDA, DATA, HORARIO, ID_MEDICO FROM TASY.TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
-                      " WHERE "
-              Set sqlStr = sqlStr _" ID_ESPECIALIDADE = ? AND NR_SEQ_AREA_ATUACAO = ?"
-              set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.IdEspecialidades, pRequest.NrAreaAtuacao)
-        }
-        if pRequest.CdAgenda '= ""   
-        {
-             $$$TRACE("RetornarAgendaDisponivel - pRequest.CdAgenda não esta vazia ")
-             
-             set sqlStr =  "SELECT NR_SEQUENCIA_INTERNO_AGENDA, DATA, HORARIO FROM TASY.TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
-                      " WHERE "   
-             Set sqlStr = sqlStr _" CD_AGENDA = ?"   
-             set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.CdAgenda)
-        } 
-
-        if pRequest.CdAgenda '= "" && pRequest.Data  '= ""   
-        {
-              $$$TRACE("RetornarAgendaDisponivel - pRequest.CdAgenda não esta vazia e pRequest.Data não vazia")
-
-             set sqlStr =  "SELECT NR_SEQUENCIA_INTERNO_AGENDA,  HORARIO FROM TASY.TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
-                      " WHERE "   
-             Set sqlStr = sqlStr _" HORARIO = ? AND o	NR_SEQUENCIA_INTERNO_AGENDA = ?"  
-             set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.Horario, pRequest.NrInternoAgenda) 
-        }
-
-              
+            
+        set sqlStr =  " SELECT NR_SEQUENCIA_INTERNO_AGENDA,  HORARIO FROM TASY.TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
+                      " WHERE "_
+                      " HORARIO = ? AND NR_SEQUENCIA_INTERNO_AGENDA = ? "
+        
+        set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.Data, pRequest.CdAgenda)      
         if $$$ISERR(tSC) return tSC
         
-        return tSC
+        return tSC  
+
+
+}
+
+
+Method RetornarMedicosDisponivel(pRequest As pocho.msg.RequestMedicosDisponivel, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+{
+        
+        $$$TRACE("RetornarMedicosDisponivel - Retornar ")
+        
+        set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
+            
+        set sqlStr =  " SELECT CD_AGENDA, DATA, HORARIO, ID_MEDICO FROM TASY.TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
+                      " WHERE "_
+                      " ID_ESPECIALIDADE = ? AND NR_SEQ_AREA_ATUACAO = ? "
+        
+        set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.IdEspecialidades, pRequest.NrAreaAtuacao)      
+        if $$$ISERR(tSC) return tSC
+        
+        return tSC  
+
+
+}
+
+Method RetornarDataDisponivel(pRequest As pocho.msg.RequestDataDisponivel, Output pOutput As EnsLib.SQL.Snapshot) As %Status
+{
+        $$$TRACE("RetornarDataDisponivel - Retornar ")
+        
+        set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
+            
+        set sqlStr =  " SELECT NR_SEQUENCIA_INTERNO_AGENDA, DATA, HORARIO FROM TASY.TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
+                      " WHERE "_
+                      " CD_AGENDA = ? "
+        
+        set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.CdAgenda)      
+        if $$$ISERR(tSC) return tSC
+        
+        return tSC  
+
+
 }
 
 Method RetornarPacienteAgendaPorCPF(pRequest As pocho.msg.RequestQuantidadeAgenda, Output pOutput As EnsLib.SQL.Snapshot) As %Status
@@ -190,7 +205,19 @@ Method RetornarPacienteAgendaPorCPF(pRequest As pocho.msg.RequestQuantidadeAgend
 XData MessageMap
 {
 <MapItems>
-     <MapItem MessageType="pocho.msg.RequestAtuacaoEspecialidade">
+    <MapItem MessageType="pocho.msg.RequestHorariosDisponivel">
+		<Method>RetornarHorariosDisponivel</Method>
+    </MapItem>
+    
+    <MapItem MessageType="pocho.msg.RequestMedicosDisponivel">
+		<Method>RetornarMedicosDisponivel</Method>
+    </MapItem>
+    
+    <MapItem MessageType="pocho.msg.RequestDataDisponivel">
+		<Method>RetornarDataDisponivel</Method>
+    </MapItem>
+    
+    <MapItem MessageType="pocho.msg.RequestAtuacaoEspecialidade">
 		<Method>RetornarAtuacaoEspecialidade</Method>
     </MapItem>
 

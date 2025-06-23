@@ -153,6 +153,65 @@ Method RetornarRegraQuantidadeAgendamento(pInput As pocho.msg.RequestQuantidadeA
     return tSC
 }
 
+
+/// RetornarHorariosDisponivel
+/// @apiPub[path="/RetornarHorariosDisponivel/{pCdAgenda}/{pData}"]
+/// @apiPub[charset="UTF-8"]
+/// @apiPub[tag="Consultar"]
+/// @apiPub[verb="GET"]
+Method RetornarHorariosDisponivel(pCdAgenda As %String,pData As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
+{
+    Set pInput = ##class("pocho.msg.RequestHorariosDisponivel").%New()
+    Set pInput.CdAgenda =  pCdAgenda
+    Set pInput.Data =  pData
+    
+    
+    Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
+    if $$$ISERR(tSC) Return tSC
+    
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
+    
+    return tSC
+}
+
+/// RetornarMedicosDisponivel
+/// @apiPub[path="/RetornarMedicosDisponivel/{pIdEspecialidades}/{pNrAreaAtuacao}"]
+/// @apiPub[charset="UTF-8"]
+/// @apiPub[tag="Consultar"]
+/// @apiPub[verb="GET"]
+Method RetornarMedicosDisponivel(pIdEspecialidades As %String,pNrAreaAtuacao As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
+{
+    Set pInput = ##class("pocho.msg.RequestMedicosDisponivel").%New()
+    Set pInput.IdEspecialidades =  pIdEspecialidades
+    Set pInput.NrAreaAtuacao =  pNrAreaAtuacao
+    
+    
+    Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
+    if $$$ISERR(tSC) Return tSC
+    
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
+    
+    return tSC
+}
+
+/// RetornarDataDisponivel
+/// @apiPub[path="/RetornarDataDisponivel/{pCdAgenda}"]
+/// @apiPub[charset="UTF-8"]
+/// @apiPub[tag="Consultar"]
+/// @apiPub[verb="GET"]
+Method RetornarDataDisponivel(pCdAgenda As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
+{
+    Set pInput = ##class("pocho.msg.RequestDataDisponivel").%New()
+    Set pInput.pCdAgenda =  pCdAgenda
+    
+    Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
+    if $$$ISERR(tSC) Return tSC
+    
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
+    
+    return tSC
+}
+
 /// RetornarAgendaDisponivel
 /// @apiPub[path="/RetornarAgendaDisponivel"]
 /// @apiPub[charset="UTF-8"]
