@@ -1,0 +1,17 @@
+### VisualStudioCode ###
+#.vscode/*
+#*.code-workspace
+
+# Project files
+**/*.secret
+#**/*.key
+**/*.tgz
+**/*.tar.gz
+/external/database
+/external/license
+/external/webgateway
+
+
+
+# OS files
+.DS_Store
