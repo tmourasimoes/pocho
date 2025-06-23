@@ -124,27 +124,24 @@ Method RetornarRegraQuantidadeAgendamento(pRequest As pocho.msg.RequestQuantidad
 
 Method RetornarHorariosDisponivel(pRequest As pocho.msg.RequestHorariosDisponivel, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
-                
+        //Teste    
         $$$TRACE("RetornarHorariosDisponivel - Retornar ")
         
         set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
             
-        set sqlStr =  " SELECT NR_SEQUENCIA_INTERNO_AGENDA,  HORARIO FROM TASY.TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
+        set sqlStr =  " SELECT NR_SEQUENCIA_INTERNO_AGENDA, HORARIO FROM TASY.TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
                       " WHERE "_
-                      " HORARIO = ? AND NR_SEQUENCIA_INTERNO_AGENDA = ? "
+                      " DATA = ? AND CD_AGENDA = ? "
         
         set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.Data, pRequest.CdAgenda)      
         if $$$ISERR(tSC) return tSC
         
-        return tSC  
-
-
+        return tSC
 }
-
 
 Method RetornarMedicosDisponivel(pRequest As pocho.msg.RequestMedicosDisponivel, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
-        
+        //Teste       
         $$$TRACE("RetornarMedicosDisponivel - Retornar ")
         
         set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
@@ -156,13 +153,12 @@ Method RetornarMedicosDisponivel(pRequest As pocho.msg.RequestMedicosDisponivel,
         set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.IdEspecialidades, pRequest.NrAreaAtuacao)      
         if $$$ISERR(tSC) return tSC
         
-        return tSC  
-
-
+        return tSC
 }
 
 Method RetornarDataDisponivel(pRequest As pocho.msg.RequestDataDisponivel, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
+        //Teste
         $$$TRACE("RetornarDataDisponivel - Retornar ")
         
         set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
@@ -174,9 +170,7 @@ Method RetornarDataDisponivel(pRequest As pocho.msg.RequestDataDisponivel, Outpu
         set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.CdAgenda)      
         if $$$ISERR(tSC) return tSC
         
-        return tSC  
-
-
+        return tSC
 }
 
 Method RetornarPacienteAgendaPorCPF(pRequest As pocho.msg.RequestQuantidadeAgenda, Output pOutput As EnsLib.SQL.Snapshot) As %Status
@@ -249,9 +243,7 @@ XData MessageMap
 		<Method>RetornarRegraQuantidadeAgendamento</Method>
     </MapItem>
 
-     <MapItem MessageType="pocho.msg.RequestAgendaDisponivel">
-		<Method>RetornarAgendaDisponivel</Method>
-    </MapItem>
+    
 
      <MapItem MessageType="pocho.msg.RequestQuantidadeAgenda">
 		<Method>RetornarPacienteAgendaPorCPF</Method>

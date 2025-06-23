@@ -1,6 +1,23 @@
 Class pocho.msg.RequestHorariosDisponivel Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
-    Property CdAgenda As %String;
 
-    Property Data As %String;
+Property CdAgenda As %String;
+
+Property Data As %String;
+
+Storage Default
+{
+<Data name="RequestHorariosDisponivelDefaultData">
+<Subscript>"RequestHorariosDisponivel"</Subscript>
+<Value name="1">
+<Value>CdAgenda</Value>
+</Value>
+<Value name="2">
+<Value>Data</Value>
+</Value>
+</Data>
+<DefaultData>RequestHorariosDisponivelDefaultData</DefaultData>
+<Type>%Storage.Persistent</Type>
+}
+
 }
