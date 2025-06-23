@@ -33,6 +33,20 @@ Method RetornarPacientePorCPF(pCPF As %String) As EnsLib.SQL.Snapshot [ WebMetho
     Quit tResponse
 }
 
+Method RetornarConvenioPorNome(pIdOperadora As %String) As EnsLib.SQL.Snapshot [ WebMethod ]
+{
+    Set pInput = ##class("pocho.msg.RequestOperadora").%New()
+    Set pInput.IdOperadora = pIdOperadora
+    
+    Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
+      
+    if $$$ISERR(tSC) Return tSC
+    
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
+    
+    return tSC
+}
+
 // Method GXML(Output pObj As pocho.msg.GXML) As pocho.msg.GXML [ WebMethod ]
 
 // {
