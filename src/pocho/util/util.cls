@@ -1,7 +1,7 @@
 Class pocho.util.util Extends %RegisteredObject
 {
 
-ClassMethod SnapToXML(pInput As EnsLib.SQL.Snapshot) As %String
+ClassMethod SnapToXML(pInput As EnsLib.SQL.Snapshot) As %Stream.Object
 {
         Set pOutput = ""
 

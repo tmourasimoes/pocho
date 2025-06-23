@@ -18,18 +18,19 @@ Method Teste(pTeste As %String) As %String [ WebMethod ]
     Quit pTeste_"1"
 }
 
-Method RetornarPacientePorCPF(pCPF As %String) As %XML.Adaptor [ WebMethod ]
+Method RetornarPacientePorCPF(pCPF As %String) As EnsLib.SQL.Snapshot [ WebMethod ]
 {
+    
     Set pInput = ##class("pocho.msg.RequestPaciente").%New()
     Set pInput.CPF = pCPF
     
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
         
-    //do tResponse.XMLExportToString(.pOutput)
+    //do tResponse.XMLExportToStream(.pOutput)
+    
+    //Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
 
-    Set pOutput = ##class(pocho.util.util).SnapToXML(tResponse)
-
-    Quit pOutput
+    Quit tResponse
 }
 
 // Method GXML(Output pObj As pocho.msg.GXML) As pocho.msg.GXML [ WebMethod ]
