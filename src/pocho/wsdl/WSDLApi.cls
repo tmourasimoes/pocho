@@ -1,4 +1,4 @@
-Class pocho.wsdl.WSDLApi Extends EnsLib.SOAP.Service
+Class pocho.wsdl.WSDLApi Extends (EnsLib.SOAP.Service, %XML.Adaptor)
 {
 
 Parameter ADAPTER = "EnsLib.SOAP.InboundAdapter";
@@ -18,16 +18,18 @@ Method Teste(pTeste As %String) As %String [ WebMethod ]
     Quit pTeste_"1"
 }
 
-Method RetornarPacientePorCPF(pCPF As %String) As %String [ WebMethod ]
+Method RetornarPacientePorCPF(pCPF As %String) As %XML.Adaptor [ WebMethod ]
 {
     Set pInput = ##class("pocho.msg.RequestPaciente").%New()
     Set pInput.CPF = pCPF
     
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
         
-    do tResponse.XMLExportToString(.r)
+    //do tResponse.XMLExportToString(.pOutput)
 
-    Quit r
+    Set pOutput = ##class(pocho.util.util).SnapToXML(tResponse)
+
+    Quit pOutput
 }
 
 // Method GXML(Output pObj As pocho.msg.GXML) As pocho.msg.GXML [ WebMethod ]
