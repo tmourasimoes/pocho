@@ -41,12 +41,13 @@ Method RetornarPacientePorCPF(pCPF As %String, Output pOutput As %DynamicObject)
 
 /// RetornarConvenioPorNome
 /// @apiPub[tag="Consultar"]
+/// @apiPub[verb="Get"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[path="RetornarConvenioPorNome/{pIdOperadora}"]
 Method RetornarConvenioPorNome(pIdOperadora As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
     Set pInput = ##class("pocho.msg.RequestOperadora").%New()
-    Set pInput.pIdOperadora = pIdOperadora
+    Set pInput.IdOperadora = pIdOperadora
     
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
       
@@ -60,6 +61,7 @@ Method RetornarConvenioPorNome(pIdOperadora As %String, Output pOutput As %Dynam
 /// RetornarPlanoPorConvenio
 /// @apiPub[tag="Consultar"]
 /// @apiPub[charset="UTF-8"]
+/// @apiPub[verb="Get"]
 /// @apiPub[path="RetornarPlanoPorConvenio/{pConvenio}/{pPlano}"]
 Method RetornarPlanoPorConvenio(pConvenio As %String, pPlano As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
@@ -79,6 +81,7 @@ Method RetornarPlanoPorConvenio(pConvenio As %String, pPlano As %String, Output 
 
 /// RetornarEspecialidade
 /// @apiPub[tag="Consultar"]
+/// @apiPub[verb="Get"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[path="RetornarEspecialidade/{pIdEspecialidade}"]
 Method RetornarEspecialidade(pIdEspecialidade As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
@@ -98,6 +101,7 @@ Method RetornarEspecialidade(pIdEspecialidade As %String, Output pOutput As %Dyn
 
 /// RetornarAtuacaoEspecialidade
 /// @apiPub[tag="Consultar"]
+/// @apiPub[verb="Get"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[path="RetornarAtuacaoEspecialidade/{pIdEspecialidade}/{pNrAreaAtuacao}"]
 Method RetornarAtuacaoEspecialidade(pIdEspecialidade As %String, pNrAreaAtuacao As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
@@ -138,7 +142,7 @@ Method RetornarRegraPermiteConvenioAgenda(pCdConvenio As %String, Output pOutput
 /// @apiPub[path="/RetornarRegraQuantidadeAgendamento"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]
-/// @apiPub[verb="GET"]
+/// @apiPub[verb="Post"]
 Method RetornarRegraQuantidadeAgendamento(pInput As pocho.msg.RequestQuantidadeAgendamento, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
@@ -168,7 +172,6 @@ Method RetornarAgendaDisponivel(pInput As pocho.msg.RequestAgendaDisponivel, Out
 /// @apiPub[path="/RetornarPacienteAgendaPorCPF"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]
-/// @apiPub[verb="GET"]
 Method RetornarPacienteAgendaPorCPF(pInput As pocho.msg.RequestQuantidadeAgenda, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
