@@ -1,15 +1,5 @@
-Class pocho.api.api Extends (Ens.BusinessService, %SOAP.WebService)
+Class pocho.api.api Extends Ens.BusinessService
 {
-
-/// Name of the WebService.
-Parameter SERVICENAME = "api";
-
-/// TODO: change this to actual SOAP namespace.
-/// SOAP Namespace for the WebService
-Parameter NAMESPACE = "https://tempuri.org";
-
-/// Namespaces of referenced classes will be used in the WSDL.
-Parameter USECLASSNAMESPACES = 1;
 
 /// teste
 /// @apiPub[tag="TesteAPI"]

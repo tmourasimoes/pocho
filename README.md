@@ -13,6 +13,11 @@ http://localhost:52773/csp/healthshare/pocho/services/pocho.wsdl.WSDLApi.cls?wsd
 http://localhost:52773/api/wsdl/pocho/pocho.wsdl.WSDLApi.cls?wsdl
 
 
+http://localhost:52773/csp/healthshare/pocho/services/pocho.api.api.cls?wsdl
+
+
+
+
 7. Open Swagger to Access the APIs and input demo data in many ways: http://localhost:52773/swagger-ui/index.html?url=http://localhost:52773/api/pocho/_spec#/
 
 Additonal commands

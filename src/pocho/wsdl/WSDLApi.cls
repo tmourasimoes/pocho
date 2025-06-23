@@ -13,10 +13,24 @@ Parameter USECLASSNAMESPACES = 1;
 
 Method Teste(pTeste As %String) As %String [ WebMethod ]
 {
-    Quit pTeste
+    Quit pTeste_"1"
 }
 
-// Method GXML(Output pObj As pocho.msg.GXML) As %Status [ WebMethod ]
+Method RetornarPacientePorCPF(pCPF As %String) As %Status [ WebMethod ]
+{
+    Set pInput = ##class("pocho.msg.RequestPaciente").%New()
+    Set pInput.CPF = pCPF
+    
+    Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
+      
+    if $$$ISERR(tSC) Return tSC
+    
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
+    
+    return tSC
+}
+
+// Method GXML(Output pObj As pocho.msg.GXML) As pocho.msg.GXML [ WebMethod ]
 
 // {
 
@@ -30,7 +44,7 @@ Method Teste(pTeste As %String) As %String [ WebMethod ]
 
 //     Set pObj.CPF      = tTabela.CPF
 
-//     quit tSC
+//     quit pObj
 
 // }
 
