@@ -40,11 +40,7 @@ Method RetornarConvenioPorNome(pIdOperadora As %String) As EnsLib.SQL.Snapshot [
     
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
       
-    if $$$ISERR(tSC) Return tSC
-    
-    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
-    
-    return tSC
+    Quit tResponse
 }
 
 // Method GXML(Output pObj As pocho.msg.GXML) As pocho.msg.GXML [ WebMethod ]
