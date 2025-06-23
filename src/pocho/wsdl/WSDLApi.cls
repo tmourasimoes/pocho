@@ -16,26 +16,22 @@ Method Teste(pTeste As %String) As %String [ WebMethod ]
     Quit pTeste
 }
 
-Method TesteAPI(pTeste As %String) As %String [ WebMethod ]
-{
-    Set pObj = ##class("pocho.api.api").%New()
-    Set rv= pObj.teste("1234",.t)
-    Quit t
-}
+// Method GXML(Output pObj As pocho.msg.GXML) As %Status [ WebMethod ]
 
-Method GXML(Output pObj As pocho.msg.GXML) As %Status [ WebMethod ]
-{
-    Set tSC = $$$OK
-    
-  
+// {
 
-    Set tTabela = ##class(pocho.msg.GXML).%OpenId(1)
+//     Set tSC = $$$OK
 
-    Set pObj.Telefone = tTabela.Telefone
-    Set pObj.Nome     = tTabela.Nome
-    Set pObj.CPF      = tTabela.CPF
+//     Set tTabela = ##class(pocho.msg.GXML).%OpenId(1)
 
-    quit tSC
-}
+//     Set pObj.Telefone = tTabela.Telefone
+
+//     Set pObj.Nome     = tTabela.Nome
+
+//     Set pObj.CPF      = tTabela.CPF
+
+//     quit tSC
+
+// }
 
 }
