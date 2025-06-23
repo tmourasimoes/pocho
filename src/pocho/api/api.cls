@@ -21,7 +21,7 @@ Method teste(pCode As %String, Output pOutput As %String) As %Status [ WebMethod
     Quit tSC
 }
 
-/// RetornarPacientePorCPF
+/// RetornarPacientePorCPF - Solicitação 1
 /// @apiPub[tag="Consultar"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[path="RetornarPacientePorCPF/{pCPF}"]
@@ -39,7 +39,7 @@ Method RetornarPacientePorCPF(pCPF As %String, Output pOutput As %DynamicObject)
     return tSC
 }
 
-/// RetornarConvenioPorNome
+/// RetornarConvenioPorNome - Solicitação 2
 /// @apiPub[tag="Consultar"]
 /// @apiPub[verb="Get"]
 /// @apiPub[charset="UTF-8"]
@@ -58,7 +58,7 @@ Method RetornarConvenioPorNome(pIdOperadora As %String, Output pOutput As %Dynam
     return tSC
 }
 
-/// RetornarPlanoPorConvenio
+/// RetornarPlanoPorConvenio - Solicitação 3
 /// @apiPub[tag="Consultar"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[verb="Get"]
@@ -79,7 +79,7 @@ Method RetornarPlanoPorConvenio(pConvenio As %String, pPlano As %String, Output 
     return tSC
 }
 
-/// RetornarEspecialidade
+/// RetornarEspecialidade - Solicitação 4
 /// @apiPub[tag="Consultar"]
 /// @apiPub[verb="Get"]
 /// @apiPub[charset="UTF-8"]
@@ -99,7 +99,7 @@ Method RetornarEspecialidade(pIdEspecialidade As %String, Output pOutput As %Dyn
     return tSC
 }
 
-/// RetornarAtuacaoEspecialidade
+/// RetornarAtuacaoEspecialidade - Solicitação 5
 /// @apiPub[tag="Consultar"]
 /// @apiPub[verb="Get"]
 /// @apiPub[charset="UTF-8"]
@@ -120,7 +120,7 @@ Method RetornarAtuacaoEspecialidade(pIdEspecialidade As %String, pNrAreaAtuacao 
     return tSC
 }
 
-/// RetornarRegraPermiteConvenioAgenda
+/// RetornarRegraPermiteConvenioAgenda - Solicitação 6
 /// @apiPub[tag="Consultar"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[path="RetornarRegraPermiteConvenioAgenda/{pCdConvenio}"]
@@ -138,7 +138,7 @@ Method RetornarRegraPermiteConvenioAgenda(pCdConvenio As %String, Output pOutput
     return tSC
 }
 
-/// RetornarRegraQuantidadeAgendamento
+/// RetornarRegraQuantidadeAgendamento - Solicitação 7
 /// @apiPub[path="/RetornarRegraQuantidadeAgendamento"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]
@@ -153,27 +153,7 @@ Method RetornarRegraQuantidadeAgendamento(pInput As pocho.msg.RequestQuantidadeA
     return tSC
 }
 
-/// RetornarHorariosDisponivel
-/// @apiPub[path="/RetornarHorariosDisponivel/{pCdAgenda}/{pData}"]
-/// @apiPub[charset="UTF-8"]
-/// @apiPub[tag="Consultar"]
-/// @apiPub[verb="GET"]
-Method RetornarHorariosDisponivel(pCdAgenda As %String, pData As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
-{
-    Set pInput = ##class("pocho.msg.RequestHorariosDisponivel").%New()
-    Set pInput.CdAgenda =  pCdAgenda
-    Set pInput.Data =  pData
-    
-    
-    Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
-    if $$$ISERR(tSC) Return tSC
-    
-    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
-    
-    return tSC
-}
-
-/// RetornarMedicosDisponivel
+/// RetornarMedicosDisponivel - Solicitação 8
 /// @apiPub[path="/RetornarMedicosDisponivel/{pIdEspecialidades}/{pNrAreaAtuacao}"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]
@@ -193,7 +173,7 @@ Method RetornarMedicosDisponivel(pIdEspecialidades As %String, pNrAreaAtuacao As
     return tSC
 }
 
-/// RetornarDataDisponivel
+/// RetornarDataDisponivel - Solicitação 9
 /// @apiPub[path="/RetornarDataDisponivel/{pCdAgenda}"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]
@@ -201,7 +181,7 @@ Method RetornarMedicosDisponivel(pIdEspecialidades As %String, pNrAreaAtuacao As
 Method RetornarDataDisponivel(pCdAgenda As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
     Set pInput = ##class("pocho.msg.RequestDataDisponivel").%New()
-    Set pInput.pCdAgenda =  pCdAgenda
+    Set pInput.CdAgenda =  pCdAgenda
     
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
     if $$$ISERR(tSC) Return tSC
@@ -211,7 +191,27 @@ Method RetornarDataDisponivel(pCdAgenda As %String, Output pOutput As %DynamicOb
     return tSC
 }
 
-/// RetornarPacienteAgendaPorCPF
+/// RetornarHorariosDisponivel - Solicitação 10 
+/// @apiPub[path="/RetornarHorariosDisponivel/{pCdAgenda}/{pData}"]
+/// @apiPub[charset="UTF-8"]
+/// @apiPub[tag="Consultar"]
+/// @apiPub[verb="GET"]
+Method RetornarHorariosDisponivel(pCdAgenda As %String, pData As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
+{
+    Set pInput = ##class("pocho.msg.RequestHorariosDisponivel").%New()
+    Set pInput.CdAgenda =  pCdAgenda
+    Set pInput.Data =  pData
+    
+    
+    Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
+    if $$$ISERR(tSC) Return tSC
+    
+    Set pOutput = ##class(pocho.util.util).SnapToDyna(tResponse)
+    
+    return tSC
+}
+
+/// RetornarPacienteAgendaPorCPF - Solicitação 11
 /// @apiPub[path="/RetornarPacienteAgendaPorCPF"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]

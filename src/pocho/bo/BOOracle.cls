@@ -131,8 +131,10 @@ Method RetornarHorariosDisponivel(pRequest As pocho.msg.RequestHorariosDisponive
             
         set sqlStr =  " SELECT NR_SEQUENCIA_INTERNO_AGENDA, HORARIO FROM TASY.TASYAEC_RETORNA_AGENDA_DISPONIVEL "_
                       " WHERE "_
-                      " DATA = ? AND CD_AGENDA = ? "
+                      " DATA = REPLACE(?, '-', '/') AND CD_AGENDA = ? "
         
+        $$$TRACE("Str:"_sqlStr)
+
         set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.Data, pRequest.CdAgenda)      
         if $$$ISERR(tSC) return tSC
         
