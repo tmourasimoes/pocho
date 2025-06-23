@@ -11,17 +11,7 @@
 			"active": true
 		},
 		"intersystems.servers": {
-			
-			"irishealthlocal": {
-				"webServer": {
-					"scheme": "http",
-					"host": "localhost",
-					"port": 56773
-				},
-				"description": "irishealthlocal",
-				"username": "_SYSTEM",
-                "password": "SYS"
-			},
+						
             "irishealth": {
 				"webServer": {
 					"scheme": "http",

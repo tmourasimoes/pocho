@@ -16,7 +16,7 @@ services:
   
     ports:
       - "1972:1972"
-      - "56773:52773"
+      - "52773:52773"
 
     volumes:
       - ./external/database:/db
