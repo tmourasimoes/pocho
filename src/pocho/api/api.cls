@@ -17,6 +17,8 @@ Method teste(pCode As %String, Output pOutput As %String) As %Status [ WebMethod
 /// @apiPub[path="RetornarPacientePorCPF/{pCPF}"]
 Method RetornarPacientePorCPF(pCPF As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
+    Set tSC = $$$OK
+
     Set pInput = ##class("pocho.msg.RequestPaciente").%New()
     Set pInput.CPF = pCPF
     
@@ -36,6 +38,8 @@ Method RetornarPacientePorCPF(pCPF As %String, Output pOutput As %DynamicObject)
 /// @apiPub[path="RetornarConvenioPorNome/{pIdOperadora}"]
 Method RetornarConvenioPorNome(pIdOperadora As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
+    Set tSC = $$$OK
+    
     Set pInput = ##class("pocho.msg.RequestOperadora").%New()
     Set pInput.IdOperadora = pIdOperadora
     
@@ -55,6 +59,8 @@ Method RetornarConvenioPorNome(pIdOperadora As %String, Output pOutput As %Dynam
 /// @apiPub[path="RetornarPlanoPorConvenio/{pConvenio}/{pPlano}"]
 Method RetornarPlanoPorConvenio(pConvenio As %String, pPlano As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
+    Set tSC = $$$OK
+    
     Set pInput = ##class("pocho.msg.RequestPlanoConvenio").%New()
     Set pInput.CdConvenio = pConvenio
     Set pInput.CdPlano = pPlano
@@ -76,6 +82,8 @@ Method RetornarPlanoPorConvenio(pConvenio As %String, pPlano As %String, Output 
 /// @apiPub[path="RetornarEspecialidade/{pIdEspecialidade}"]
 Method RetornarEspecialidade(pIdEspecialidade As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
+    Set tSC = $$$OK
+    
     Set pInput = ##class("pocho.msg.RequestEspecialidades").%New()
     Set pInput.IdEspecialidades = pIdEspecialidade
     
@@ -96,6 +104,8 @@ Method RetornarEspecialidade(pIdEspecialidade As %String, Output pOutput As %Dyn
 /// @apiPub[path="RetornarAtuacaoEspecialidade/{pIdEspecialidade}/{pNrAreaAtuacao}"]
 Method RetornarAtuacaoEspecialidade(pIdEspecialidade As %String, pNrAreaAtuacao As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
+    Set tSC = $$$OK
+    
     Set pInput = ##class("pocho.msg.RequestAtuacaoEspecialidade").%New()
     Set pInput.IdEspecialidades = pIdEspecialidade
     Set pInput.NrAreaAtuacao = pNrAreaAtuacao
@@ -116,6 +126,8 @@ Method RetornarAtuacaoEspecialidade(pIdEspecialidade As %String, pNrAreaAtuacao 
 /// @apiPub[path="RetornarRegraPermiteConvenioAgenda/{pCdConvenio}"]
 Method RetornarRegraPermiteConvenioAgenda(pCdConvenio As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
+    Set tSC = $$$OK
+    
     Set pInput = ##class("pocho.msg.RequestRegraPermiteConvenioAgenda").%New()
     Set pInput.CdConvenio =  pCdConvenio
     
@@ -135,6 +147,8 @@ Method RetornarRegraPermiteConvenioAgenda(pCdConvenio As %String, Output pOutput
 /// @apiPub[verb="Post"]
 Method RetornarRegraQuantidadeAgendamento(pInput As pocho.msg.RequestQuantidadeAgendamento, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
+    Set tSC = $$$OK
+    
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
     if $$$ISERR(tSC) Return tSC
     
@@ -150,6 +164,8 @@ Method RetornarRegraQuantidadeAgendamento(pInput As pocho.msg.RequestQuantidadeA
 /// @apiPub[verb="GET"]
 Method RetornarMedicosDisponivel(pIdEspecialidades As %String, pNrAreaAtuacao As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
+    Set tSC = $$$OK
+    
     Set pInput = ##class("pocho.msg.RequestMedicosDisponivel").%New()
     Set pInput.IdEspecialidades =  pIdEspecialidades
     Set pInput.NrAreaAtuacao =  pNrAreaAtuacao
@@ -170,6 +186,8 @@ Method RetornarMedicosDisponivel(pIdEspecialidades As %String, pNrAreaAtuacao As
 /// @apiPub[verb="GET"]
 Method RetornarDataDisponivel(pCdAgenda As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
+    Set tSC = $$$OK
+    
     Set pInput = ##class("pocho.msg.RequestDataDisponivel").%New()
     Set pInput.CdAgenda =  pCdAgenda
     
@@ -188,6 +206,8 @@ Method RetornarDataDisponivel(pCdAgenda As %String, Output pOutput As %DynamicOb
 /// @apiPub[verb="GET"]
 Method RetornarHorariosDisponivel(pCdAgenda As %String, pData As %String, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
+    Set tSC = $$$OK
+    
     Set pInput = ##class("pocho.msg.RequestHorariosDisponivel").%New()
     Set pInput.CdAgenda =  pCdAgenda
     Set pInput.Data =  pData
@@ -207,6 +227,8 @@ Method RetornarHorariosDisponivel(pCdAgenda As %String, pData As %String, Output
 /// @apiPub[tag="Consultar"]
 Method RetornarPacienteAgendaPorCPF(pInput As pocho.msg.RequestQuantidadeAgenda, Output pOutput As %DynamicObject) As %Status [ WebMethod ]
 {
+    Set tSC = $$$OK
+    
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)   
     if $$$ISERR(tSC) Return tSC
     
@@ -215,40 +237,23 @@ Method RetornarPacienteAgendaPorCPF(pInput As pocho.msg.RequestQuantidadeAgenda,
     return tSC
 }
 
-// XData apiPub [ MimeType = application/json ]
-
-// {
-
-// {
-
-//   "info":{
-
-//     "title":"Api isp",
-
-//     "description":"Api isp ",
-
-//     "version":"1.0.0",
-
-//     "termsOfService":"http://swagger.io/terms/",
-
-//     "contact":{
-
-//       "email":"apiteam@swagger.io"
-
-//     },
-
-//     "license":{
-
-//       "name":"Apache 2.0",
-
-//       "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
-
-//     }
-
-//   }
-
-// }
-
-// }
+XData apiPub [ MimeType = application/json ]
+{
+{
+  "info":{
+    "title":"Api isp",
+    "description":"Api isp ",
+    "version":"1.0.0",
+    "termsOfService":"http://swagger.io/terms/",
+    "contact":{
+      "email":"apiteam@swagger.io"
+    },
+    "license":{
+      "name":"Apache 2.0",
+      "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  }
+}
+}
 
 }

@@ -22,6 +22,13 @@ XData ProductionDefinition
     <Setting Target="Adapter" Name="DSN">ORACLE</Setting>
     <Setting Target="Adapter" Name="JGService">JGS</Setting>
   </Item>
+  <Item Name="pocho.wsdl.WSDLApi" Category="" ClassName="pocho.wsdl.WSDLApi" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Adapter" Name="EnableStandardRequests">1</Setting>
+  </Item>
+  <Item Name="BOOracleTipado" Category="" ClassName="pocho.bo.BOOracleTipado" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
+    <Setting Target="Adapter" Name="DSN">ORACLE</Setting>
+    <Setting Target="Adapter" Name="JGService">JGS</Setting>
+  </Item>
 </Production>
 }
 
