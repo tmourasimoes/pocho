@@ -9,7 +9,7 @@ ClassMethod ParseOBJPaciente(pInput As EnsLib.SQL.Snapshot) As pocho.msg.Respons
         
         set tResult = ##class("pocho.obj.Paciente").%New()
         
-        for x=1:1:pInput.GetColumnCount() 
+        for x=2:1:pInput.GetColumnCount() 
         {
             set tObj = {}
             Set tVal =  pInput.GetData(x)
@@ -44,8 +44,10 @@ ClassMethod ParseOBJPaciente(pInput As EnsLib.SQL.Snapshot) As pocho.msg.Respons
         }
         kill tResult
 
-        return pOutput
+        
     }
+
+    return pOutput
 }
 
 ClassMethod ParseOBJOperadora(pInput As EnsLib.SQL.Snapshot, Output pOutput As pocho.msg.ResponseOperadora) As %Status

@@ -27,7 +27,7 @@ Method RetornarPacientePorCPF(pCPF As %String) As pocho.msg.ResponsePaciente [ W
     
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
 
-    Set tSC = ##class(pocho.util.ParseObj).ParseOBJPaciente(tResponse, .tObj)
+    Set tObj = ##class(pocho.util.ParseObj).ParseOBJPaciente(tResponse)
 
     Quit tObj
 }
