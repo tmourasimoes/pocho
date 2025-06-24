@@ -50,13 +50,15 @@ ClassMethod ParseOBJPaciente(pInput As EnsLib.SQL.Snapshot) As pocho.msg.Respons
     return pOutput
 }
 
-ClassMethod ParseOBJOperadora(pInput As EnsLib.SQL.Snapshot, Output pOutput As pocho.msg.ResponseOperadora) As %Status
+ClassMethod ParseOBJOperadora(pInput As EnsLib.SQL.Snapshot) As pocho.msg.ResponseOperadora
 {
+    set pOutput = ##class("pocho.msg.ResponseOperadora").%New()
+    
     while pInput.Next() {
         
         set tResult = ##class("pocho.obj.Operadora").%New()
         
-        for x=1:1:pInput.GetColumnCount() 
+        for x=2:1:pInput.GetColumnCount() 
         {
             set tObj = {}
             Set tVal =  pInput.GetData(x)
@@ -91,6 +93,8 @@ ClassMethod ParseOBJOperadora(pInput As EnsLib.SQL.Snapshot, Output pOutput As p
         }
         kill tResult
     }
+
+    return pOutput
 }
 
 ClassMethod ParseOBJEspecialidades(pInput As EnsLib.SQL.Snapshot, Output pOutput As pocho.msg.ResponseEspecialidade) As %Status

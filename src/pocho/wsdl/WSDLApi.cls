@@ -41,7 +41,7 @@ Method RetornarConvenioPorNome(pIdOperadora As %String) As pocho.msg.ResponseOpe
     
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
     
-    Set tSC = ##class(pocho.util.util).ParseOBJOperadora(tResponse, .tObj)
+    Set tObj = ##class(pocho.util.util).ParseOBJOperadora(tResponse)
     
     Quit tObj
 }
