@@ -41,7 +41,7 @@ Method RetornarConvenioPorNome(pIdOperadora As %String) As pocho.msg.ResponseOpe
     
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
     
-    Set tObj = ##class(pocho.util.util).ParseOBJOperadora(tResponse)
+    Set tObj = ##class(pocho.util.ParseObj).ParseOBJOperadora(tResponse)
     
     Quit tObj
 }
@@ -55,7 +55,7 @@ Method RetornarEspecialidade(pIdEspecialidade As %String) As pocho.msg.ResponseE
     
     Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
       
-    Set tSC = ##class(pocho.util.ParseObj).ParseOBJEspecialidades(tResponse, .tObj)
+    Set tObj = ##class(pocho.util.ParseObj).ParseOBJEspecialidades(tResponse)
     
     Quit tObj
 }
