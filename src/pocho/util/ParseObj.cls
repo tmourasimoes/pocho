@@ -1,8 +1,10 @@
 Class pocho.util.ParseObj Extends %RegisteredObject
 {
 
-ClassMethod ParseOBJPaciente(pInput As EnsLib.SQL.Snapshot, Output pOutput As pocho.msg.ResponsePaciente) As %Status
+ClassMethod ParseOBJPaciente(pInput As EnsLib.SQL.Snapshot) As pocho.msg.ResponsePaciente
 {
+    set pOutput = ##class("pocho.msg.ResponsePaciente").%New()
+    
     while pInput.Next() {
         
         set tResult = ##class("pocho.obj.Paciente").%New()
@@ -41,6 +43,8 @@ ClassMethod ParseOBJPaciente(pInput As EnsLib.SQL.Snapshot, Output pOutput As po
             Do pOutput.Pacientes.Insert(tResult)
         }
         kill tResult
+
+        return pOutput
     }
 }
 
