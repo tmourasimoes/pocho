@@ -18,7 +18,7 @@ Method Teste(pTeste As %String) As %String [ WebMethod ]
     Quit pTeste_"1"
 }
 
-Method RetornarPacientePorCPFMOC(pCPF As %String) As pocho.msg.ResponsePaciente [ WebMethod ]
+Method RetornarPacientePorCPF(pCPF As %String) As pocho.msg.ResponsePaciente [ WebMethod ]
 {
     Set pInput = ##class("pocho.msg.RequestPaciente").%New()
     Set pInput.CPF = pCPF
@@ -27,6 +27,32 @@ Method RetornarPacientePorCPFMOC(pCPF As %String) As pocho.msg.ResponsePaciente 
 
     Set pOutput = ##class(pocho.util.ParseObj).ParseOBJPaciente(tResponse, .tObj)
 
+    Quit tObj
+}
+
+Method RetornarConvenioPorNome(pIdOperadora As %String) As pocho.msg.ResponseOperadora [ WebMethod ]
+{
+    Set pInput = ##class("pocho.msg.RequestOperadora").%New()
+    Set pInput.IdOperadora = pIdOperadora
+    
+    Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
+    
+    Set pOutput = ##class(pocho.util.util).ParseOBJOperadora(tResponse, .tObj)
+    
+    Quit tObj
+}
+
+Method RetornarEspecialidade(pIdEspecialidade As %String) As pocho.msg.ResponseEspecialidade [ WebMethod ]
+{
+    Set pInput = ##class("pocho.msg.RequestEspecialidades").%New()
+    Set pInput.IdEspecialidades = pIdEspecialidade
+    
+    Set tSC = ..SendRequestSync("BOOracle",pInput,.tResponse)
+      
+    if $$$ISERR(tSC) Return tSC
+    
+    Set pOutput = ##class(pocho.util.ParseObj).ParseOBJEspecialidades(tResponse, .tObj)
+    
     Quit tObj
 }
 
