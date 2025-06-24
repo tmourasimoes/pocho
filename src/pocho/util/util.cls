@@ -32,11 +32,13 @@ ClassMethod SnapToXML(pInput As EnsLib.SQL.Snapshot) As %Stream.Object
                 
                 //Write tVal,",", tCol ,",", pInput.GetColumnType(x),  ! 
             }
-
+            
             Set pOutput = pOutput_ "</Dados>"
         }
         
-        return pOutput
+        Set status=##class(%XML.TextReader).ParseString(pOutput,.reader)
+        
+        return reader
 }
 
 /// Converte EnsLib.SQL.Snapshot para %Library.DynamicObject
