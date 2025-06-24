@@ -11,7 +11,7 @@ Method teste(pCode As %String, Output pOutput As %String) As %Status [ WebMethod
     Quit tSC
 }
 
-/// RetornarPacientePorCPF - Solicitação 1
+/// RetornarPacientePorCPF - Solicitação 1 CPF = 21798265672
 /// @apiPub[tag="Consultar"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[path="RetornarPacientePorCPF/{pCPF}"]
@@ -31,7 +31,7 @@ Method RetornarPacientePorCPF(pCPF As %String, Output pOutput As %DynamicObject)
     return tSC
 }
 
-/// RetornarConvenioPorNome - Solicitação 2
+/// RetornarConvenioPorNome - Solicitação 2 pIdOperadora = 82
 /// @apiPub[tag="Consultar"]
 /// @apiPub[verb="Get"]
 /// @apiPub[charset="UTF-8"]
@@ -52,7 +52,7 @@ Method RetornarConvenioPorNome(pIdOperadora As %String, Output pOutput As %Dynam
     return tSC
 }
 
-/// RetornarPlanoPorConvenio - Solicitação 3
+/// RetornarPlanoPorConvenio - Solicitação 3 pConvenio = 4 pPlano = 04
 /// @apiPub[tag="Consultar"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[verb="Get"]
@@ -75,7 +75,7 @@ Method RetornarPlanoPorConvenio(pConvenio As %String, pPlano As %String, Output 
     return tSC
 }
 
-/// RetornarEspecialidade - Solicitação 4
+/// RetornarEspecialidade - Solicitação 4 pIdEspecialidade = 2
 /// @apiPub[tag="Consultar"]
 /// @apiPub[verb="Get"]
 /// @apiPub[charset="UTF-8"]
@@ -97,7 +97,7 @@ Method RetornarEspecialidade(pIdEspecialidade As %String, Output pOutput As %Dyn
     return tSC
 }
 
-/// RetornarAtuacaoEspecialidade - Solicitação 5
+/// RetornarAtuacaoEspecialidade - Solicitação 5 IdEspecialidade = 2 pNrAreaAtuacao = 2
 /// @apiPub[tag="Consultar"]
 /// @apiPub[verb="Get"]
 /// @apiPub[charset="UTF-8"]
@@ -120,7 +120,7 @@ Method RetornarAtuacaoEspecialidade(pIdEspecialidade As %String, pNrAreaAtuacao 
     return tSC
 }
 
-/// RetornarRegraPermiteConvenioAgenda - Solicitação 6
+/// RetornarRegraPermiteConvenioAgenda - Solicitação 6 pCdConvenio  = 4 
 /// @apiPub[tag="Consultar"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[path="RetornarRegraPermiteConvenioAgenda/{pCdConvenio}"]
@@ -140,7 +140,7 @@ Method RetornarRegraPermiteConvenioAgenda(pCdConvenio As %String, Output pOutput
     return tSC
 }
 
-/// RetornarRegraQuantidadeAgendamento - Solicitação 7
+/// RetornarRegraQuantidadeAgendamento - Solicitação 7 { "CdConvenio": "90",  "CdAgenda": "2902",  "DiaSemanaRegra": "Sexta-feira"}
 /// @apiPub[path="/RetornarRegraQuantidadeAgendamento"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]
@@ -157,7 +157,7 @@ Method RetornarRegraQuantidadeAgendamento(pInput As pocho.msg.RequestQuantidadeA
     return tSC
 }
 
-/// RetornarMedicosDisponivel - Solicitação 8
+/// RetornarMedicosDisponivel - Solicitação 8 pIdEspecialidades  = 97 pNrAreaAtuacao = 8
 /// @apiPub[path="/RetornarMedicosDisponivel/{pIdEspecialidades}/{pNrAreaAtuacao}"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]
@@ -179,7 +179,7 @@ Method RetornarMedicosDisponivel(pIdEspecialidades As %String, pNrAreaAtuacao As
     return tSC
 }
 
-/// RetornarDataDisponivel - Solicitação 9
+/// RetornarDataDisponivel - Solicitação 9 pCdAgenda = 1986
 /// @apiPub[path="/RetornarDataDisponivel/{pCdAgenda}"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]
@@ -199,7 +199,7 @@ Method RetornarDataDisponivel(pCdAgenda As %String, Output pOutput As %DynamicOb
     return tSC
 }
 
-/// RetornarHorariosDisponivel - Solicitação 10 
+/// RetornarHorariosDisponivel - Solicitação 10 pCdAgenda = 7332 pData = 24-06-2025
 /// @apiPub[path="/RetornarHorariosDisponivel/{pCdAgenda}/{pData}"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]
@@ -221,7 +221,8 @@ Method RetornarHorariosDisponivel(pCdAgenda As %String, pData As %String, Output
     return tSC
 }
 
-/// RetornarPacienteAgendaPorCPF - Solicitação 11
+/// RetornarPacienteAgendaPorCPF - Solicitação 11 
+/// {"CdAgenda": "2332","CPF": "21798265672","CdClassificaoAgenda": "PCONS","Data": "08/06/2021"}
 /// @apiPub[path="/RetornarPacienteAgendaPorCPF"]
 /// @apiPub[charset="UTF-8"]
 /// @apiPub[tag="Consultar"]
