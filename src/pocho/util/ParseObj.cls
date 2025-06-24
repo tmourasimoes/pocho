@@ -105,7 +105,7 @@ ClassMethod ParseOBJEspecialidades(pInput As EnsLib.SQL.Snapshot) As pocho.msg.R
         
         set tResult = ##class("pocho.obj.Especialidade").%New()
         
-        for x=2:1:pInput.GetColumnCount() 
+        for x=1:1:pInput.GetColumnCount() 
         {
             set tObj = {}
             Set tVal =  pInput.GetData(x)
