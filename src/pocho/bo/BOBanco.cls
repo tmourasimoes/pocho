@@ -137,8 +137,7 @@ Method RetornarConvenioPorNome(pRequest As pocho.msg.RequestOperadora, Output pR
               
               Set tResult.NMOPERADORA   = pOutput.Get("NM_OPERADORA")    
               Set tResult.QTDIASRETORNO = pOutput.Get("QT_DIAS_RETORNO")    
-              
-              
+                            
               Do pResponse.Operadoras.Insert(tResult)
               kill tResult
           }
@@ -202,37 +201,35 @@ Method RetornarPlanoPorConvenio(pRequest As pocho.msg.RequestPlanoConvenio, Outp
 /// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarEspecialidade(pRequest As pocho.msg.RequestEspecialidades, Output pResponse As pocho.msg.ResponseEspecialidade) As %Status
 {
-    try
-	{
-        Do pRequest.NewResponse(.pResponse) 
+   
+    Set tSC = $$$OK
+
+    Do pRequest.NewResponse(.pResponse) 
+    
+    $$$TRACE("RetornarEspecialidade - Retornar ")
+    
+    set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
         
-        $$$TRACE("RetornarEspecialidade - Retornar ")
-        
-        set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
+    set sqlStr =  "SELECT ESPECIALIDADE FROM "_..Schema_".TASYAEC_RETORNA_ESPECIALIDADES WHERE ID_ESPECIALIDADE = ?"
+    
+    set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.IdEspecialidades ) 
+    
+    If $IsObject(pOutput) {
             
-        set sqlStr =  "SELECT ESPECIALIDADE FROM "_..Schema_".TASYAEC_RETORNA_ESPECIALIDADES WHERE ID_ESPECIALIDADE = ?"
-        
-        set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr, pRequest.IdEspecialidades ) 
-        
-        If $IsObject(pOutput) {
-	       		
-          $$$TRACE("Objeto setado!!!")
+        $$$TRACE("Objeto setado!!!")
 
-          While pOutput.Next() {
-              set tResult = ##class("pocho.obj.Especialidade").%New() 
-              $$$TRACE("Registro(s) encontrado(s)!!! - " _ pOutput.RowCount) 
-              
-              Set tResult.ESPECIALIDADE   = pOutput.Get("ESPECIALIDADE")    
-              
-              Do pResponse.Especialidades.Insert(tResult)
-              kill tResult
-          }
-	    }
-
+        While pOutput.Next() {
+            set tResult = ##class("pocho.obj.Especialidade").%New() 
+            $$$TRACE("Registro(s) encontrado(s)!!! - " _ pOutput.RowCount) 
+            
+            Set tResult.ESPECIALIDADE   = pOutput.Get("ESPECIALIDADE")    
+            
+            Do pResponse.Especialidades.Insert(tResult)
+            kill tResult
+        }
     }
-    catch erro{
-		throw ##class(%Exception.SystemException).%New("Codigo Erro:"_erro.Code_" Location:"_erro.Location_" Data:"_erro.Data)
-	}    
+    if $$$ISERR(tSC) return tSC
+   
     Quit tSC
 }
 
