@@ -13,10 +13,8 @@
 
 
 
-src/pocho/
-!src/pocho/Production.cls
-
-
 # OS files
 .DS_Store
+
+src/pocho/Production.cls
 
