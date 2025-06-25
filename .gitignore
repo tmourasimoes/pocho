@@ -11,7 +11,6 @@ external/database
 external/license
 external/webgateway
 src/pocho/Production.cls
-external/cpf
 
 # OS files
 .DS_Store
