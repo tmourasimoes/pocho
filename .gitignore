@@ -8,7 +8,7 @@
 **/*.tgz
 **/*.tar.gz
 /external/database
-
+/external/webgateway
 /external/license
 /src/pocho/Production.cls
 
