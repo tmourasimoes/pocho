@@ -1,8 +1,0 @@
-127.0.0.1 demo-plataform-local
-127.0.0.1 demo-fhir-local
-127.0.0.1 demo-fhir-facade-local
-127.0.0.1 demo-healthconnect-local
-127.0.0.1 demo-interop-local
-127.0.0.1 demo-database-local
-127.0.0.1 demo-apipub-local
-127.0.0.1 demo-iris-local
