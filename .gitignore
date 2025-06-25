@@ -1,0 +1,24 @@
+### VisualStudioCode ###
+.vscode/*
+#*.code-workspace
+
+# Project files
+**/*.secret
+#**/*.key
+**/*.tgz
+**/*.tar.gz
+
+external/database
+external/datadb
+external/license
+external/webgateway
+src/pocho/Production.cls
+external/cpf
+docker-compose.yaml
+
+build/
+
+# OS files
+.DS_Store
+
+
