@@ -13,7 +13,7 @@ XData BPL [ XMLNamespace = "http://www.intersystems.com/bpl" ]
 <assign property="callrequest" value="request" action="set" />
 </request>
 <response type='pocho.msg.ResponsePaciente' >
-<assign property="callresponse" value="response" action="set" />
+<assign property="response" value="callresponse" action="set" />
 </response>
 </call>
 <trace name='Fim' value='"Fim Processo Paciente"' xpos='200' ypos='450' />
