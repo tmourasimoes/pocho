@@ -1,7 +1,7 @@
 Class pocho.msg.RequestHorariosDisponivel Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
 
-Parameter RESPONSECLASSNAME As %String = "pocho.msg.ResponseHorarioDisponiveis";
+Parameter RESPONSECLASSNAME As STRING = "pocho.msg.ResponseHorarioDisponiveis";
 
 Property CdAgenda As %String;
 

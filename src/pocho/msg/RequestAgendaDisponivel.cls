@@ -43,6 +43,9 @@ Storage Default
 <Value name="8">
 <Value>NrInternoAgenda</Value>
 </Value>
+<Value name="9">
+<Value>NrInternoAgenda2</Value>
+</Value>
 </Data>
 <DefaultData>RequestAgendaDisponivelDefaultData</DefaultData>
 <Type>%Storage.Persistent</Type>
