@@ -25,20 +25,15 @@ XData ProductionDefinition
   <Item Name="pocho.wsdl.WSDLApi" Category="" ClassName="pocho.wsdl.WSDLApi" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="EnableStandardRequests">1</Setting>
   </Item>
-  <Item Name="JGSPOSTGRE" Category="" ClassName="EnsLib.JavaGateway.Service" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="Port">55558</Setting>
-  </Item>
-  <Item Name="BOBanco" Category="" ClassName="pocho.bo.BOBanco" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="Schema">public</Setting>
-    <Setting Target="Adapter" Name="DSN">POSTGRES</Setting>
-    <Setting Target="Adapter" Name="JGService">JGSPOSTGRE</Setting>
-  </Item>
-  <Item Name="pocho.wsdl.WSDL" Category="" ClassName="pocho.wsdl.WSDL" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
+  <Item Name="pocho.wsdl.WSDL" Category="" ClassName="pocho.wsdl.WSDL" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Adapter" Name="EnableStandardRequests">1</Setting>
-    <Setting Target="Adapter" Name="Port">1990</Setting>
-    <Setting Target="Adapter" Name="JobPerConnection">0</Setting>
   </Item>
-  <Item Name="BPProcesso" Category="" ClassName="pocho.bp.BPProcesso" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
+  <Item Name="BOBanco" Category="" ClassName="pocho.bo.BOBanco" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
+    <Setting Target="Adapter" Name="DSN">ORACLE</Setting>
+    <Setting Target="Adapter" Name="JGService">JGS</Setting>
+    <Setting Target="Host" Name="Schema">TASY</Setting>
+  </Item>
+  <Item Name="BPProcesso" Category="" ClassName="pocho.bp.BPProcesso" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
 </Production>
 }
