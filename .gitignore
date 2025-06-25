@@ -11,7 +11,11 @@
 /external/license
 /external/webgateway
 
-src/pocho/Production.cls
+
+
+src/pocho/
+!dist/Production.cls
+
 
 # OS files
 .DS_Store
