@@ -1,6 +1,8 @@
 Class pocho.msg.RequestOperadora Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
 
+Parameter RESPONSECLASSNAME As %String = "pocho.msg.ResponseOperadora";
+
 Property IdOperadora As %String;
 
 Storage Default

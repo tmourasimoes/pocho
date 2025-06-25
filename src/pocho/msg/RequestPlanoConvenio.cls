@@ -1,6 +1,8 @@
 Class pocho.msg.RequestPlanoConvenio Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
 
+Parameter RESPONSECLASSNAME As %String = "pocho.msg.ResponsePlanoConvenio";
+
 Property CdConvenio As %String;
 
 Property CdPlano As %String;

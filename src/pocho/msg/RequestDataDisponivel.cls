@@ -1,6 +1,8 @@
 Class pocho.msg.RequestDataDisponivel Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
 
+Parameter RESPONSECLASSNAME As %String = "pocho.msg.ResponseDatasDisponiveis";
+
 Property CdAgenda As %String;
 
 Storage Default

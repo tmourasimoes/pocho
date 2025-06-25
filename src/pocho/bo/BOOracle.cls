@@ -186,6 +186,7 @@ Method RetornarHorariosDisponivel(pRequest As pocho.msg.RequestHorariosDisponive
         $$$TRACE("Str:"_sqlStr)
 
         set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.Data, pRequest.CdAgenda)      
+        
         if $$$ISERR(tSC) return tSC
         
         return tSC

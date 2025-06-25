@@ -1,6 +1,8 @@
 Class pocho.msg.RequestAtuacaoEspecialidade Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
 
+Parameter RESPONSECLASSNAME As %String = "pocho.msg.ResponseAtuacaoEspecialidade";
+
 Property IdEspecialidades As %String;
 
 Property NrAreaAtuacao As %String;
