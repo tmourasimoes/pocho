@@ -13,6 +13,8 @@ Parameter SETTINGS = "Schema";
 
 Method RetornarRegraQuantidadeAgendamento(pRequest As pocho.msg.RequestQuantidadeAgendamento, Output pResponse As pocho.msg.ResponseRegraQuantidadeAgendamento) As %Status
 {
+    try
+	{
         Do pRequest.NewResponse(.pResponse) 
         
         $$$TRACE("RetornarRegraQuantidadeAgendamento - Retornar ")
@@ -42,14 +44,18 @@ Method RetornarRegraQuantidadeAgendamento(pRequest As pocho.msg.RequestQuantidad
               kill tResult
           }
 	    }
-
-        if $$$ISERR(tSC) return tSC
-        
-        Quit tSC
+    }
+    catch erro{
+		throw ##class(%Exception.SystemException).%New("Codigo Erro:"_erro.Code_" Location:"_erro.Location_" Data:"_erro.Data)
+	}
+    
+    Quit tSC
 }
 
 Method RetornarPacientePorCPF(pRequest As pocho.msg.RequestPaciente, Output pResponse As pocho.msg.ResponsePaciente) As %Status
 {
+    try
+	{
         Do pRequest.NewResponse(.pResponse) 
         
         $$$TRACE("RetornarPacientePorCPF - Retornar ")
@@ -76,9 +82,11 @@ Method RetornarPacientePorCPF(pRequest As pocho.msg.RequestPaciente, Output pRes
           }
 	    }
 
-        if $$$ISERR(tSC) return tSC
-        
-        Quit tSC
+    }
+    catch erro{
+		throw ##class(%Exception.SystemException).%New("Codigo Erro:"_erro.Code_" Location:"_erro.Location_" Data:"_erro.Data)
+	}    
+    Quit tSC
 }
 
 XData MessageMap
