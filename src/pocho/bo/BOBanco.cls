@@ -11,6 +11,16 @@ Property Schema As %String;
 
 Parameter SETTINGS = "Schema";
 
+/// Criação								 <br>		
+/// Descrição    : Consulta regras de Quantidade de Agendamentos  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Mensagem de transação: pocho.msg.RequestQuantidadeAgendamento <br>
+/// Property CdConvenio As %String; <br>
+/// Property CdAgenda As %String; <br>
+/// Property DiaSemanaRegra As %String; <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarRegraQuantidadeAgendamento(pRequest As pocho.msg.RequestQuantidadeAgendamento, Output pResponse As pocho.msg.ResponseRegraQuantidadeAgendamento) As %Status
 {
     try
@@ -52,6 +62,14 @@ Method RetornarRegraQuantidadeAgendamento(pRequest As pocho.msg.RequestQuantidad
     Quit tSC
 }
 
+/// Criação								 <br>		
+/// Descrição    : Consulta Pacientes  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Mensagem de transação: pocho.msg.RequestPaciente <br>
+/// Property CPF As %String; <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarPacientePorCPF(pRequest As pocho.msg.RequestPaciente, Output pResponse As pocho.msg.ResponsePaciente) As %Status
 {
     try

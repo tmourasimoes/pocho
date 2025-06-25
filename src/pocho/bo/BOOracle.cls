@@ -1,3 +1,5 @@
+Include EnsSQLTypes
+
 Class pocho.bo.BOOracle Extends Ens.BusinessOperation
 {
 
@@ -5,6 +7,12 @@ Parameter ADAPTER = "EnsLib.SQL.OutboundAdapter";
 
 Parameter INVOCATION = "Queue";
 
+/// Criação								 <br>		
+/// Descrição    : Consulta Pacientes  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarPacientePorCPF(pRequest As pocho.msg.RequestPaciente, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         
@@ -23,6 +31,12 @@ Method RetornarPacientePorCPF(pRequest As pocho.msg.RequestPaciente, Output pOut
         return tSC
 }
 
+/// Criação								 <br>		
+/// Descrição    : Consulta Convenio por Nome  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarConvenioPorNome(pRequest As pocho.msg.RequestOperadora, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         //Teste
@@ -40,6 +54,12 @@ Method RetornarConvenioPorNome(pRequest As pocho.msg.RequestOperadora, Output pO
         return tSC
 }
 
+/// Criação								 <br>		
+/// Descrição    : Consulta plano por convenio  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarPlanoPorConvenio(pRequest As pocho.msg.RequestPlanoConvenio, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         //Teste
@@ -56,6 +76,12 @@ Method RetornarPlanoPorConvenio(pRequest As pocho.msg.RequestPlanoConvenio, Outp
         return tSC
 }
 
+/// Criação								 <br>		
+/// Descrição    : Consulta Especialidades  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarEspecialidade(pRequest As pocho.msg.RequestEspecialidades, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         //Teste
@@ -72,6 +98,12 @@ Method RetornarEspecialidade(pRequest As pocho.msg.RequestEspecialidades, Output
         return tSC
 }
 
+/// Criação								 <br>		
+/// Descrição    : Consulta atuação por Especialidade  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarAtuacaoEspecialidade(pRequest As pocho.msg.RequestAtuacaoEspecialidade, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         //Teste
@@ -88,6 +120,12 @@ Method RetornarAtuacaoEspecialidade(pRequest As pocho.msg.RequestAtuacaoEspecial
         return tSC
 }
 
+/// Criação								 <br>		
+/// Descrição    : Consulta regra permite convenio Agenda  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarRegraPermiteConvenioAgenda(pRequest As pocho.msg.RequestRegraPermiteConvenioAgenda, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         //Teste
@@ -104,6 +142,12 @@ Method RetornarRegraPermiteConvenioAgenda(pRequest As pocho.msg.RequestRegraPerm
         return tSC
 }
 
+/// Criação								 <br>		
+/// Descrição    : Consulta regras Quantidade de Agendamentos  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarRegraQuantidadeAgendamento(pRequest As pocho.msg.RequestQuantidadeAgendamento, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         //Teste
@@ -122,6 +166,12 @@ Method RetornarRegraQuantidadeAgendamento(pRequest As pocho.msg.RequestQuantidad
         return tSC
 }
 
+/// Criação								 <br>		
+/// Descrição    : Consulta Horarios Disponíveis  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarHorariosDisponivel(pRequest As pocho.msg.RequestHorariosDisponivel, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         //Teste    
@@ -141,6 +191,12 @@ Method RetornarHorariosDisponivel(pRequest As pocho.msg.RequestHorariosDisponive
         return tSC
 }
 
+/// Criação								 <br>		
+/// Descrição    : Consulta medicos disponíveis  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarMedicosDisponivel(pRequest As pocho.msg.RequestMedicosDisponivel, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         //Teste       
@@ -158,6 +214,12 @@ Method RetornarMedicosDisponivel(pRequest As pocho.msg.RequestMedicosDisponivel,
         return tSC
 }
 
+/// Criação								 <br>		
+/// Descrição    : Consulta data disponíveis  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarDataDisponivel(pRequest As pocho.msg.RequestDataDisponivel, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         //Teste
@@ -175,6 +237,12 @@ Method RetornarDataDisponivel(pRequest As pocho.msg.RequestDataDisponivel, Outpu
         return tSC
 }
 
+/// Criação								 <br>		
+/// Descrição    : Consulta Paciente Agenda por CPF  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
 Method RetornarPacienteAgendaPorCPF(pRequest As pocho.msg.RequestQuantidadeAgenda, Output pOutput As EnsLib.SQL.Snapshot) As %Status
 {
         //Teste
