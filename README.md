@@ -3,9 +3,9 @@
 
 4. Build the container images: `docker-compose build --progress=plain`.
 5. Create and run containers: `docker-compose up -d`
-6. Open IRIS managementportal: http://localhost:56773/csp/sys/UtilHome.csp  
-6. Open IRIS terminal: http://localhost:56773/terminal/    
-6. Open Webgateway managementportal: http://localhost:56773/csp/bin/Systems/Module.cxw
+6. Open IRIS managementportal: http://localhost:52773/csp/sys/UtilHome.csp  
+6. Open IRIS terminal: http://localhost:52773/terminal/    
+6. Open Webgateway managementportal: http://localhost:52773/csp/bin/Systems/Module.cxw
 
 WSDL
 
