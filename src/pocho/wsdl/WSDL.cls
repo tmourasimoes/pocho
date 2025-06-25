@@ -17,7 +17,7 @@ Method RetornarPacientePorCPF(pInput As pocho.msg.RequestPaciente) As pocho.msg.
 {
         Set tSC = $$$OK
         
-        Set tSC = ..SendRequestSync("BOBanco",pInput,.tResponse)
+        Set tSC = ..SendRequestSync("BPProcesso",pInput,.tResponse)
 
         Quit tResponse
 }
