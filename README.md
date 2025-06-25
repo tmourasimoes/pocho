@@ -12,10 +12,14 @@ WSDL
 
 
 http://localhost:52773/csp/healthshare/pocho/services/pocho.wsdl.WSDLApi.cls?wsdl
-http://localhost:52773/api/wsdl/pocho/pocho.wsdl.WSDLApi.cls?wsdl
+http://localhost:52773/csp/healthshare/pocho/services/pocho.wsdl.WSDL.cls?wsdl
 
 
-http://localhost:52773/csp/healthshare/pocho/services/pocho.api.api.cls?wsdl
+http://localhost:52773/api/wsdl/pocho/pocho.wsdl.WSDL.cls?wsdl
+
+
+
+
 
 
 

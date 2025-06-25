@@ -1,6 +1,8 @@
 Class pocho.msg.RequestQuantidadeAgendamento Extends (Ens.Request, %JSON.Adaptor, %Persistent, %XML.Adaptor)
 {
 
+Parameter RESPONSECLASSNAME As %String = "pocho.msg.ResponseRegraQuantidadeAgendamento";
+
 Property CdConvenio As %String;
 
 Property CdAgenda As %String;
