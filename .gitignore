@@ -8,8 +8,8 @@
 **/*.tgz
 **/*.tar.gz
 external/database
-external/webgateway
 external/license
+external/webgateway
 src/pocho/Production.cls
 
 # OS files
