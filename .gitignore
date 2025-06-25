@@ -10,8 +10,9 @@
 /external/database
 /external/license
 /external/webgateway
-/src/pocho/Production.cls
 
+src/pocho/Production.cls
 
 # OS files
 .DS_Store
+
