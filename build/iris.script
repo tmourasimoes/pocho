@@ -1,0 +1,64 @@
+
+w "installing Webterminal ===================================================",!
+set $NAMESPACE = "user"
+do $system.OBJ.Load("/opt/irisbuild/webinstall.xml","ck")
+
+zn "HSLIB"
+Do ##class(HS.Util.Installer.Foundation).Install("POCHO")
+
+zn "POCHO"
+s version="0.7.1" s r=##class(%Net.HttpRequest).%New(),r.Server="pm.community.intersystems.com",r.SSLConfiguration="ISC.FeatureTracker.SSL.Config" d r.Get("/packages/zpm/"_version_"/installer"),$system.OBJ.LoadStream(r.HttpResponse.Data,"c")
+
+zpm "enable -community"
+w "installing Swagger ===================================================",!
+zpm "install swagger-ui"
+w "installing ApiPUB ===================================================",!
+zpm "install iris-apipub"
+
+w "installing SRC Code Demo ===================================================",!
+do $System.OBJ.LoadDir("/opt/irisbuild/src/pocho","cuk",,1)
+
+
+
+zn "%SYS"
+s j = ##class(%Library.SQLConnection).%New()
+s j.isJDBC = 1
+s j.Name = "POCHO"
+s j.URL = "jdbc:IRIS://localhost:1972/pocho"
+s j.Usr = "_SYSTEM"
+s j.driver = "com.intersystems.jdbc.IRISDriver"
+s j.ReverseOJ = 0
+s j.needlongdatalen = 0
+s j.nodefq = 0
+s j.nofnconv = 0
+s j.nvl = 0
+s j.useCAST = 0
+s j.useCASTCHAR = 0
+do j.%Save()
+
+zn "%SYS"
+s j = ##class(%Library.SQLConnection).%New()
+s j.isJDBC = 1
+s j.Name = "ORACLE"
+s j.URL = "jdbc:oracle:thin:@//[URL]]:1521/dbhml"
+s j.Usr = "USER"
+s j.driver = "oracle.jdbc.OracleDriver"
+s j.ReverseOJ = 0
+s j.needlongdatalen = 0
+s j.nodefq = 0
+s j.nofnconv = 0
+s j.nvl = 0
+s j.useCAST = 0
+s j.useCASTCHAR = 0
+s j.classpath = "/sahred/drivers/ojdbc8.jar"
+do j.%Save()
+
+
+w "Starting Production ===================================================",!
+
+
+zn "POCHO"
+set ^EnsPortal.Settings("SuperUser","LastProduction") = "pocho.Production"
+
+
+w "Finish ALL-ALL-ALL ===================================================",!
