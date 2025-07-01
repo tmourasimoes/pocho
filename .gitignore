@@ -1,5 +1,5 @@
 ### VisualStudioCode ###
-#.vscode/*
+.vscode/*
 #*.code-workspace
 
 # Project files
