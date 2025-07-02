@@ -13,6 +13,15 @@ Parameter NAMESPACE = "https://tempuri.org";
 /// Namespaces of referenced classes will be used in the WSDL.
 Parameter USECLASSNAMESPACES = 1;
 
+Method GravarVinicius(pInput As pocho.msg.RequestVinicius) As pocho.msg.ResponseVinicius [ WebMethod ]
+{
+        Set tSC = $$$OK
+        
+        Set tSC = ..SendRequestSync("Vinicius",pInput,.tResponse)
+
+        Quit tResponse
+}
+
 Method RetornarPacientePorCPF(pInput As pocho.msg.RequestPaciente) As pocho.msg.ResponsePaciente [ WebMethod ]
 {
         Set tSC = $$$OK

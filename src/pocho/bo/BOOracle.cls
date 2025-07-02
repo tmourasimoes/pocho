@@ -267,9 +267,51 @@ Method RetornarPacienteAgendaPorCPF(pRequest As pocho.msg.RequestQuantidadeAgend
         return tSC
 }
 
+/// Criação								 <br>		
+/// Descrição    : Atualizar Cliente  no TASY	 <br>
+/// Desenvolvedor: Thiago Simões		 <br>
+/// Dt Inclusão  : 22/06/2025			 <br>
+/// Atualizações						 <br>	
+/// Data:  ID     		:   Descrição		: 	Desenvolvedor : 
+Method RetornarVinicius(pRequest As pocho.msg.RequestVinicius, Output pResponse As pocho.msg.ResponseVinicius) As %Status
+{
+        Do pRequest.NewResponse(.pResponse) 
+        
+        //Teste
+        $$$TRACE("RetornarVinicius - Retornar ")
+        
+        set pOutput = ##class(EnsLib.SQL.Snapshot).%New()        
+            
+        set sqlStr =  "  SELECT NR_CPF FROM TASY.PESSOA_FISICA WHERE NR_CPF = ?"
+        
+         
+        
+        set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.CPF) 
+
+        If $IsObject(pOutput) {
+                set sqlStr =  "  INSERT INTO TASY.PESSOA_FISICA(NR_CPF, NM_PESSOA_FISICA,  " 
+                               _"CD_PESSOA_FISICA, NM_USUARIO, DT_ATUALIZACAO, IE_TIPO_PESSOA) "
+                               _"VALUES(?,?,TASY.PESSOA_FISICA_SEQ.Nextval,'TASY','02/07/2025',2)"
+
+                
+                
+                set tSC = ..Adapter.ExecuteUpdate(.pOut,sqlStr,pRequest.CPF, pRequest.NOME) 
+                Set pResponse.IsGravou=1
+         }
+
+
+        if $$$ISERR(tSC) return tSC
+        
+        return tSC
+}
+
 XData MessageMap
 {
 <MapItems>
+    <MapItem MessageType="pocho.msg.RequestVinicius">
+		<Method>RetornarVinicius</Method>
+    </MapItem>
+    
     <MapItem MessageType="pocho.msg.RequestHorariosDisponivel">
 		<Method>RetornarHorariosDisponivel</Method>
     </MapItem>
