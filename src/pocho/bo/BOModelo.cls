@@ -31,8 +31,6 @@ Method RetornarPacientePorCPF(pRequest As pocho.msg.RequestPaciente, Output pOut
         return tSC
 }
 
-
-
 XData MessageMap
 {
 <MapItems>
