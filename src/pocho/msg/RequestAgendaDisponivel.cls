@@ -3,6 +3,8 @@ Class pocho.msg.RequestAgendaDisponivel Extends (Ens.Request, %JSON.Adaptor, %Pe
 
 Property IdEspecialidades As %String;
 
+Property IdEspecialidades As %Interger;
+
 Property NrAreaAtuacao As %String;
 
 Property CdAgenda As %String;

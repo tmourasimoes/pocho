@@ -3,6 +3,23 @@
         "server": "irishealth",
         "ns": "POCHO",
         "active": false
+    },
+    "cSpell.words": [
+        "Horario",
+        "IdEspecialidades",
+        "Interger",
+        "NrInternoAgenda",
+        "pocho",
+        "RequestAgendaDisponivel",
+        "RequestAgendaDisponivelDefaultData"
+    ],
+    "cSpell.customDictionaries": {
+        "custom-dictionary-workspace": {
+            "name": "custom-dictionary-workspace",
+            "path": "${workspaceFolder:pocho}/.cspell/custom-dictionary-workspace.txt",
+            "addWords": true,
+            "scope": "workspace"
+        }
     }
 
     
