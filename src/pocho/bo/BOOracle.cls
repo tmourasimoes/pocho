@@ -259,7 +259,8 @@ Method RetornarPacienteAgendaPorCPF(pRequest As pocho.msg.RequestQuantidadeAgend
             
         set sqlStr =  "SELECT  DS_STATUS_AGENDA FROM TASY.TASYAEC_RETORNA_PACIENTE_AGENDA_CPF "_
                       " WHERE "_
-                      " CPF = ? AND CD_AGENDA = ? AND CD_CLASSIFICACAO_AGENDA = ? AND DATA = ? "
+                      " CPF = ? AND CD_AGENDA = ? AND CD_CLASSIFICACAO_AGENDA = ? "
+                      //" AND DATA = ? "
         
         set tSC = ..Adapter.ExecuteQuery(.pOutput,sqlStr,pRequest.CPF, pRequest.CdAgenda, pRequest.CdClassificaoAgenda, pRequest.Data)      
         if $$$ISERR(tSC) return tSC
