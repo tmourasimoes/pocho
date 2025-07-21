@@ -31,7 +31,6 @@ Method RetornarPacientePorCPF(pCPF As %String, Output pOutput As %DynamicObject)
     return tSC
 }
 
-
 XData apiPub [ MimeType = application/json ]
 {
 {

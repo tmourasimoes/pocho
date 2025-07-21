@@ -22,5 +22,4 @@ Method RetornarPacientePorCPF(pInput As pocho.msg.RequestPaciente) As pocho.msg.
         Quit tResponse
 }
 
-
 }
