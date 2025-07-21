@@ -14,6 +14,7 @@ Method CepApi(pRequest As pocho.restclient.cepRequest, Output pResponse As pocho
     
     
     
+    
     If $find(tIResponse.ContentType,"application/json")>0 {
         Set tPayload = tIResponse.bodyGet()
         Set pResponse = ##class(pocho.restclient.cepResponse).%New()
