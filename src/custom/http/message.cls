@@ -34,6 +34,7 @@ Property Https As %Boolean [ InitialExpression = 0 ];
 
 Property SSLCheckServerIdentity As %Boolean [ InitialExpression = 1 ];
 
+
 Property ContentType As %String(MAXLEN = "");
 
 Property CharSet As %String;

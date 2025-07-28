@@ -1,6 +1,7 @@
 Class custom.http.bo Extends (Ens.BusinessOperation, custom.json.utils)
 {
 
+
 Parameter ADAPTER;
 
 Parameter INVOCATION = "Queue";
