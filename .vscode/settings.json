@@ -2,7 +2,7 @@
     "objectscript.conn": {
         "server": "irishealth",
         "ns": "FHIRDEMO",
-        "active": true
+        "active": false
     }
 
     
