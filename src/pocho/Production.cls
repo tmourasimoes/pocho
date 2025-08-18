@@ -10,6 +10,7 @@ XData ProductionDefinition
     <Setting Target="Host" Name="BOAtivo">AcessoDB</Setting>
     <Setting Target="Host" Name="ResourcePaciente">HS.FHIR.DTL.vR4.Model.Resource.Patient</Setting>
   </Item>
+  
   <Item Name="apiPub.tracer.bs" Category="" ClassName="apiPub.tracer.bs" PoolSize="0" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
   </Item>
   <Item Name="apiPub.tracer.bo" Category="" ClassName="apiPub.tracer.bo" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
