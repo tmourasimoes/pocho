@@ -1,0 +1,23 @@
+set $NAMESPACE = "HSLIB"
+do:'##class(%SYS.Namespace).Exists("fhirdemo") ##class(HS.Util.Installer.Foundation).Install("fhirdemo")
+set $NAMESPACE = "fhirdemo"
+set appKey= "/csp/healthshare/demo/fhir/r4"
+set strategyClass = "HS.FHIRServer.Storage.Json.InteractionsStrategy"
+set metadataPackages = $LISTBUILD("hl7.fhir.r4.core@4.0.1","hl7.fhir.us.core@3.1.0")
+do ##class(HS.FHIRServer.Installer).InstallNamespace()
+do ##class(HS.FHIRServer.Installer).InstallInstance(appKey, strategyClass, metadataPackages)
+set strategy = ##class(HS.FHIRServer.API.InteractionsStrategy).GetStrategyForEndpoint(appKey)
+set configData = strategy.GetServiceConfigData()
+set configData.DefaultSearchPageSize = 1000
+set configData.MaxSearchPageSize = 10000
+set configData.MaxSearchResults = 10000
+do strategy.SaveServiceConfigData(configData)
+
+set sampledir = "/fhirdata/"
+set sampledir2 = "/tmp/fhirdata/15Set"
+
+set sc = ##class(HS.FHIRServer.Tools.DataLoader).SubmitResourceFiles(sampledir, "FHIRServer", appKey, 0, "^fhirlogs")
+do $System.CSP.SetConfig("CSPConfigName","poc-ho") 
+
+Set status = ##class(HS.FHIRServer.Tools.DataLoader).SubmitResourceFiles(sampledir, "FHIRServer","/csp/healthshare/fhirdemo/fhir/r4")
+Do $SYSTEM.Status.DisplayError(status)

@@ -10,13 +10,14 @@
 
 external/database
 external/datadb
-external/license
-external/webgateway
-src/pocho/Production.cls
-external/cpf
-docker-compose.yaml
 
-build/
+#external/license
+#external/webgateway
+#src/pocho/Production.cls
+#external/cpf
+#docker-compose.yaml
+
+#build/
 
 # OS files
 .DS_Store
